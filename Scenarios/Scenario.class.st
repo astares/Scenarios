@@ -45,7 +45,7 @@ Scenario >> steps [
 
 { #category : #steps }
 Scenario >> then: aString [ 
-	self addStep: #When text: aString.
+	self addStep: #Then text: aString.
 ]
 
 { #category : #accessing }
