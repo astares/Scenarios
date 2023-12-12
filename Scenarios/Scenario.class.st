@@ -62,7 +62,7 @@ Scenario >> title [
 	^ title
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
 Scenario >> title: aString [ 
 	title := aString
 ]
