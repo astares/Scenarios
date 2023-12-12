@@ -20,13 +20,15 @@ Scenario class >> title: aString [
 ]
 
 { #category : #steps }
-Scenario >> addStep: aSymbol text: aString [ 
+Scenario >> addStep: aSymbol text: aString [
+
 	steps add: (ScenarioStep type: aSymbol text: aString)
 ]
 
 { #category : #steps }
-Scenario >> given: aString [ 
-	self addStep: #Given text: aString 
+Scenario >> given: aString [
+
+	self addStep: #Given text: aString
 ]
 
 { #category : #testing }
@@ -35,11 +37,27 @@ Scenario >> hasSteps [
 	^ steps isNotEmpty
 ]
 
+{ #category : #testing }
+Scenario >> hasTitle [
+
+	^ title notNil and: [ title isNotEmpty ]
+]
+
 { #category : #initialization }
 Scenario >> initialize [
 
 	super initialize.
 	steps := OrderedCollection new
+]
+
+{ #category : #printing }
+Scenario >> printOn: aStream [
+
+	self hasTitle ifFalse: [ ^ super printOn: aStream ].
+	
+	aStream
+		nextPutAll: 'Scenario: ';
+		nextPutAll: self title
 ]
 
 { #category : #running }

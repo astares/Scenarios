@@ -11,8 +11,26 @@ ScenarioTest >> testInstanceCreation [
 	newInstance := Scenario title: 'My scenario'.
 	
 	self assert: newInstance title equals: 'My scenario'.
+	
+	self assert: newInstance hasTitle.
 	self deny: newInstance hasSteps
 
+]
+
+{ #category : #'tests - printing' }
+ScenarioTest >> testPrintStringWithoutSteps [
+
+	|newInstance|
+	newInstance := Scenario title: 'My scenario'.
+	
+	self assert: newInstance printString equals: 'Scenario: My scenario'
+
+]
+
+{ #category : #'tests - printing' }
+ScenarioTest >> testPrintStringWithoutTitle [
+
+	self assert: Scenario new printString equals: 'a Scenario'
 ]
 
 { #category : #'tests - sample' }
