@@ -1,36 +1,36 @@
 Class {
-	#name : #TestStepDefinitions,
+	#name : #SampleStepDefinitions,
 	#superclass : #ScenarioStepDefinition,
-	#category : #'Scenarios-Tests'
+	#category : #'Scenarios-Tests-Sample'
 }
 
 { #category : #steps }
-TestStepDefinitions >> errorScenario [
+SampleStepDefinitions >> errorScenario [
 
 	<Then: 'The scenario could raise an error'>
 	self error: 'an error'
 ]
 
 { #category : #steps }
-TestStepDefinitions >> failingScenario [
+SampleStepDefinitions >> failingScenario [
 	<Then: 'The scenario could fail'>
 	self assert: false
 ]
 
 { #category : #steps }
-TestStepDefinitions >> featureWithOneScenario [
+SampleStepDefinitions >> featureWithOneScenario [
 <Given: 'A feature with one scenario'>
 ]
 
 { #category : #steps }
-TestStepDefinitions >> runTheScenario [
+SampleStepDefinitions >> runTheScenario [
 
 	<When: 'The feature is run'>
 	
 ]
 
 { #category : #steps }
-TestStepDefinitions >> verifyTheSteps [
+SampleStepDefinitions >> verifyTheSteps [
 
 	<Then: 'The scenario steps get verified'>
 	

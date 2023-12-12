@@ -1,14 +1,14 @@
 Class {
 	#name : #FeatureTest,
 	#superclass : #TestCase,
-	#category : #'Scenarios-Tests'
+	#category : #'Scenarios-Tests-Tests'
 }
 
 { #category : #tests }
 FeatureTest >> testFeatureHasScenarios [
 
 	| feature |
-	feature := TestFeature new.
+	feature := SampleFeature new.
 	self assert: (feature scenarios anySatisfy: [ :each | each title = 'A scenario has a title' ])
 ]
 
@@ -16,7 +16,7 @@ FeatureTest >> testFeatureHasScenarios [
 FeatureTest >> testRunningFeatureProducesResult [
 
 	| feature result |
-	feature := TestFeature new.
+	feature := SampleFeature new.
 	result := feature run.
 	self assert: result resultCount equals: feature scenarios size
 ]
@@ -25,7 +25,7 @@ FeatureTest >> testRunningFeatureProducesResult [
 FeatureTest >> testScenariosCouldFail [
 
 	| feature result |
-	feature := TestFeature new.
+	feature := SampleFeature new.
 	result := feature run.
 	self assert: result failedCount equals: 2
 ]

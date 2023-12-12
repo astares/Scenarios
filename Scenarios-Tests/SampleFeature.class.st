@@ -1,11 +1,11 @@
 Class {
-	#name : #TestFeature,
+	#name : #SampleFeature,
 	#superclass : #Feature,
-	#category : #'Scenarios-Tests'
+	#category : #'Scenarios-Tests-Sample'
 }
 
 { #category : #scenarios }
-TestFeature >> featureGetsRun [
+SampleFeature >> featureGetsRun [
 	<Scenario: 'Running a scenario'>
 	
 	self
@@ -15,9 +15,9 @@ TestFeature >> featureGetsRun [
 ]
 
 { #category : #scenarios }
-TestFeature >> scenarioCanFail [
-
+SampleFeature >> scenarioCanFail [
 	<Scenario: 'A scenario can fail'>
+
 	self
 		given: 'A feature with one scenario';
 		when: 'The feature is run';
@@ -25,7 +25,7 @@ TestFeature >> scenarioCanFail [
 ]
 
 { #category : #scenarios }
-TestFeature >> scenarioCanFailWithError [
+SampleFeature >> scenarioCanFailWithError [
 	<Scenario: 'A scenario can fail with an error'>
 	
 	self
@@ -35,7 +35,7 @@ TestFeature >> scenarioCanFailWithError [
 ]
 
 { #category : #scenarios }
-TestFeature >> scenarioHasSteps [
+SampleFeature >> scenarioHasSteps [
 	<Scenario: 'A scenario has one or more steps'>
 	
 	self
@@ -45,6 +45,6 @@ TestFeature >> scenarioHasSteps [
 ]
 
 { #category : #scenarios }
-TestFeature >> scenarioHasTitle [
+SampleFeature >> scenarioHasTitle [
 	<Scenario: 'A scenario has a title'>
 ]
