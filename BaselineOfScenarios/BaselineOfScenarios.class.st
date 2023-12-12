@@ -1,3 +1,6 @@
+"
+Baseline for [https://github.com/gcorriga/Scenarios](https://github.com/gcorriga/Scenarios)
+"
 Class {
 	#name : #BaselineOfScenarios,
 	#superclass : #BaselineOf,
