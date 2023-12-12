@@ -1,7 +1,7 @@
 Class {
 	#name : #ScenarioTest,
 	#superclass : #TestCase,
-	#category : #'Scenarios-Tests-Tests'
+	#category : #'Scenarios-Tests-Base'
 }
 
 { #category : #tests }

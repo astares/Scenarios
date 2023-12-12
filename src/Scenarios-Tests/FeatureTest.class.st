@@ -5,7 +5,7 @@ Class {
 		'feature',
 		'result'
 	],
-	#category : #'Scenarios-Tests-Tests'
+	#category : #'Scenarios-Tests-Base'
 }
 
 { #category : #running }
