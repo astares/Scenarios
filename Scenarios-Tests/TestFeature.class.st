@@ -6,8 +6,8 @@ Class {
 
 { #category : #scenarios }
 TestFeature >> featureGetsRun [
-
 	<Scenario: 'Running a scenario'>
+	
 	self
 		given: 'A feature with one scenario';
 		when: 'The feature is run';
@@ -26,8 +26,8 @@ TestFeature >> scenarioCanFail [
 
 { #category : #scenarios }
 TestFeature >> scenarioCanFailWithError [
-
 	<Scenario: 'A scenario can fail with an error'>
+	
 	self
 		given: 'A feature with one scenario';
 		when: 'The feature is run';
@@ -36,8 +36,8 @@ TestFeature >> scenarioCanFailWithError [
 
 { #category : #scenarios }
 TestFeature >> scenarioHasSteps [
-
 	<Scenario: 'A scenario has one or more steps'>
+	
 	self
 		given: 'A scenario with steps';
 		when: 'A Scenario object gets created from it';
@@ -46,6 +46,5 @@ TestFeature >> scenarioHasSteps [
 
 { #category : #scenarios }
 TestFeature >> scenarioHasTitle [
-
 	<Scenario: 'A scenario has a title'>
 ]
