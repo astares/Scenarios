@@ -44,6 +44,18 @@ ScenarioResult >> passedCount [
 	^ passed size
 ]
 
+{ #category : #printing }
+ScenarioResult >> printOn: aStream [
+
+	aStream
+		nextPutAll: self passedCount asString;
+		nextPutAll: ' passed, ';
+		nextPutAll: self failedCount asString;
+		nextPutAll: ' failed, ';
+		nextPutAll: self undefinedCount asString;
+		nextPutAll: ' undefined.'
+]
+
 { #category : #accessing }
 ScenarioResult >> resultCount [
 
