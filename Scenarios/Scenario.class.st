@@ -28,6 +28,8 @@ Scenario >> given: aString [
 
 { #category : #initialization }
 Scenario >> initialize [
+
+	super initialize.
 	steps := OrderedCollection new
 ]
 

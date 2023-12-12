@@ -33,6 +33,7 @@ ScenarioResult >> failedCount [
 { #category : #initialization }
 ScenarioResult >> initialize [
 
+	super initialize.
 	undefined := OrderedCollection new.
 	passed := OrderedCollection new.
 	failed := OrderedCollection new
