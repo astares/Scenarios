@@ -13,17 +13,20 @@ Class {
 }
 
 { #category : #adding }
-ScenarioResult >> addFailure: aScenario [ 
-	failed add: aScenario.
+ScenarioResult >> addFailure: aScenario [
+
+	failed add: aScenario
 ]
 
 { #category : #running }
-ScenarioResult >> addPass: aScenario [ 
-	passed add: aScenario.
+ScenarioResult >> addPass: aScenario [
+
+	passed add: aScenario
 ]
 
 { #category : #running }
-ScenarioResult >> addUndefined: aScenario [ 
+ScenarioResult >> addUndefined: aScenario [
+
 	undefined add: aScenario
 ]
 
