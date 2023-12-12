@@ -34,20 +34,21 @@ ScenarioTest >> testPrintStringWithoutTitle [
 ]
 
 { #category : #'tests - sample' }
-ScenarioTest >> testScenarioHasOneOrMoreSteps [
+ScenarioTest >> testSampleScenarioHasOneOrMoreSteps [
 
-	| step |
-	step := (SampleFeature new scenarioNamed: 'A scenario has one or more steps') steps first.
+	| sampleScenario step |
+	sampleScenario := SampleFeature new scenarioNamed: 'A scenario has one or more steps'.
+	step := sampleScenario steps first.
 	self
 		assert: step type equals: #Given;
 		assert: step text equals: 'A scenario with steps'
 ]
 
 { #category : #'tests - sample' }
-ScenarioTest >> testScenarioHasTitle [
+ScenarioTest >> testSampleScenarioHasTitle [
 
-	| scenario |
-	scenario := (SampleFeature new scenarioNamed:
+	| sampleScenario |
+	sampleScenario := (SampleFeature new scenarioNamed:
 		         'A scenario has one or more steps').
-	self assert: scenario title equals: 'A scenario has one or more steps'
+	self assert: sampleScenario title equals: 'A scenario has one or more steps'
 ]
