@@ -1,3 +1,8 @@
+"
+A Feature represents a distinct aspect of the system’s functionality, which can provide value to a user. Features are usually written from the perspective of a user role.
+
+Each feature contains one or many scenarios that describe its behaviors
+"
 Class {
 	#name : #Feature,
 	#superclass : #Object,

@@ -1,3 +1,6 @@
+"
+The result of running a BDD scenario
+"
 Class {
 	#name : #ScenarioResult,
 	#superclass : #Object,

@@ -1,3 +1,6 @@
+"
+A scenario step is a component of a scenario that describes a specific action, condition, or outcome. Each scenario is made up of one or more steps, and each step starts with a keyword like Given, When, Then, And, But
+"
 Class {
 	#name : #ScenarioStep,
 	#superclass : #Object,
