@@ -20,3 +20,12 @@ FeatureTest >> testRunningFeatureProducesResult [
 	result := feature run.
 	self assert: result resultCount equals: feature scenarios size
 ]
+
+{ #category : #tests }
+FeatureTest >> testScenariosCouldFail [
+
+	| feature result |
+	feature := TestFeature new.
+	result := feature run.
+	self assert: result failedCount equals: 2
+]

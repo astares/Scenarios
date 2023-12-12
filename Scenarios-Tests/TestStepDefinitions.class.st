@@ -5,6 +5,19 @@ Class {
 }
 
 { #category : #steps }
+TestStepDefinitions >> errorScenario [
+
+	<Then: 'The scenario could raise an error'>
+	self error: 'an error'
+]
+
+{ #category : #steps }
+TestStepDefinitions >> failingScenario [
+	<Then: 'The scenario could fail'>
+	self assert: false
+]
+
+{ #category : #steps }
 TestStepDefinitions >> featureWithOneScenario [
 <Given: 'A feature with one scenario'>
 ]
