@@ -4,6 +4,21 @@ Class {
 	#category : #'Scenarios-Tests-Base'
 }
 
+{ #category : #'tests - steps' }
+ScenarioTest >> testAddingStep [
+	| scenario |
+	scenario := Scenario title: 'My scenario'.
+	
+	self deny: scenario hasSteps.
+	
+	scenario addStep: #Given text: 'My app has started'.
+	
+	self 
+		assert: scenario hasSteps;
+		assert: scenario steps size equals: 1;
+		assert: scenario steps first text equals: 'My app has started'
+]
+
 { #category : #tests }
 ScenarioTest >> testInstanceCreation [
 
