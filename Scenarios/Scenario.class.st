@@ -1,3 +1,6 @@
+"
+A scenario is a written description of your products behavior from one or more users perspectives
+"
 Class {
 	#name : #Scenario,
 	#superclass : #Object,
