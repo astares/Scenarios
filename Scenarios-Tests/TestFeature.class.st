@@ -37,7 +37,7 @@ TestFeature >> scenarioCanFailWithError [
 { #category : #scenarios }
 TestFeature >> scenarioHasSteps [
 
-	<Scenario: 'A Scenario has one or more steps'>
+	<Scenario: 'A scenario has one or more steps'>
 	self
 		given: 'A scenario with steps';
 		when: 'A Scenario object gets created from it';
@@ -47,5 +47,5 @@ TestFeature >> scenarioHasSteps [
 { #category : #scenarios }
 TestFeature >> scenarioHasTitle [
 
-	<Scenario: 'A Scenario has a title'>
+	<Scenario: 'A scenario has a title'>
 ]

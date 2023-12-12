@@ -8,7 +8,7 @@ Class {
 ScenarioTest >> testScenarioHasOneOrMoreSteps [
 
 	| step |
-	step := (TestFeature new scenarioNamed: 'A Scenario has one or more steps') steps first.
+	step := (TestFeature new scenarioNamed: 'A scenario has one or more steps') steps first.
 	self
 		assert: step type equals: #Given;
 		assert: step text equals: 'A scenario with steps'
@@ -19,6 +19,6 @@ ScenarioTest >> testScenarioHasTitle [
 
 	| scenario |
 	scenario := (TestFeature new scenarioNamed:
-		         'A Scenario has one or more steps').
-	self assert: scenario title equals: 'A Scenario has one or more steps'
+		         'A scenario has one or more steps').
+	self assert: scenario title equals: 'A scenario has one or more steps'
 ]
