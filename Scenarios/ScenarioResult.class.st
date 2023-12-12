@@ -6,7 +6,7 @@ Class {
 		'passed',
 		'failed'
 	],
-	#category : #Scenarios
+	#category : #'Scenarios-Base'
 }
 
 { #category : #adding }

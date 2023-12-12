@@ -5,7 +5,7 @@ Class {
 		'type',
 		'text'
 	],
-	#category : #Scenarios
+	#category : #'Scenarios-Base'
 }
 
 { #category : #'instance creation' }

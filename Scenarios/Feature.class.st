@@ -7,7 +7,7 @@ Class {
 		'scenario',
 		'stepDefinitions'
 	],
-	#category : #Scenarios
+	#category : #'Scenarios-Base'
 }
 
 { #category : #running }

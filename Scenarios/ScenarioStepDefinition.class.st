@@ -5,7 +5,7 @@ Class {
 		'definition',
 		'selector'
 	],
-	#category : #Scenarios
+	#category : #'Scenarios-Base'
 }
 
 { #category : #running }

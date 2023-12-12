@@ -5,7 +5,7 @@ Class {
 		'title',
 		'steps'
 	],
-	#category : #Scenarios
+	#category : #'Scenarios-Base'
 }
 
 { #category : #'instance creation' }
