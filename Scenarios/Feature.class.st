@@ -54,7 +54,9 @@ Feature >> run [
 ]
 
 { #category : #running }
-Feature >> run: aScenarioResult [ 
+Feature >> run: aScenarioResult [
+	"Run the feature (receiver) by using the given object to store the result"
+
 	self scenarios do: [:each | each run: aScenarioResult with: self stepDefinitions].
 ]
 

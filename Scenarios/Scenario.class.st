@@ -35,11 +35,15 @@ Scenario >> initialize [
 
 { #category : #running }
 Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [ 
+	"Run the scenario (receiver) by using the given object to store the result together with the given step definitions"
+	
 	aScenarioResult runScenario: self with: aCollectionOfStepDefinitions
 ]
 
 { #category : #running }
 Scenario >> runScenarioWith: stepDefinitions [ 
+	"Run the scenario (receiver) by using the given step definitions"
+
 	steps do: [ :each | each runStepWith: stepDefinitions] 
 ]
 
