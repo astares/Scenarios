@@ -32,6 +32,27 @@ ScenarioStepDefinition >> definition: aString selector: aSymbol [
 	selector := aSymbol
 ]
 
+{ #category : #ignored }
+ScenarioStepDefinition >> resources [
+	"We do not make use of test resources - so we ignore the subclass responsibility to implement this method"
+	
+	^ self shouldNotImplement 
+]
+
+{ #category : #ignored }
+ScenarioStepDefinition >> setUp [
+	"We do not make use of #setUp / tearDown cycle - so we ignore the subclass responsibility to implement this method"
+		
+	^ self shouldNotImplement
+]
+
+{ #category : #ignored }
+ScenarioStepDefinition >> tearDown [
+	"We do not make use of #setUp / tearDown cycle - so we ignore the subclass responsibility to implement this method"
+
+	^ self shouldNotImplement
+]
+
 { #category : #evaluating }
 ScenarioStepDefinition >> valueWith: aString [ 
 	self perform: selector
