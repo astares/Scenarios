@@ -4,7 +4,7 @@ Baseline for [https://github.com/gcorriga/Scenarios](https://github.com/gcorriga
 Class {
 	#name : #BaselineOfScenarios,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfScenarios
+	#category : #'BaselineOfScenarios-Base'
 }
 
 { #category : #baselines }
