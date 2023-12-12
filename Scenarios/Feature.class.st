@@ -2,7 +2,6 @@ Class {
 	#name : #Feature,
 	#superclass : #Object,
 	#instVars : [
-		'result',
 		'scenarios',
 		'scenario',
 		'stepDefinitions'
@@ -43,6 +42,7 @@ Feature >> given: aString [
 { #category : #running }
 Feature >> run [
 
+	| result |
 	result := ScenarioResult new.
 	self run: result.
 	^ result
