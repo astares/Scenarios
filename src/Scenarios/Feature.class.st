@@ -14,6 +14,12 @@ Class {
 	#category : #'Scenarios-Base'
 }
 
+{ #category : #testing }
+Feature class >> isAbstract [
+
+	^ self == Feature
+]
+
 { #category : #running }
 Feature >> buildScenarioFromMethod: aMethod [
 

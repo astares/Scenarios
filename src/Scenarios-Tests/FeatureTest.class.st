@@ -34,3 +34,10 @@ FeatureTest >> testScenariosCouldFail [
 	 
 	self assert: result failedCount equals: 2
 ]
+
+{ #category : #'tests - other' }
+FeatureTest >> testShouldBeAbstractClass [
+	"Feature should be an abstract class that is subclassed"
+		
+	self assert: Feature isAbstract
+]
