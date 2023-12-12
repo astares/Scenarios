@@ -12,8 +12,11 @@ Class {
 }
 
 { #category : #'instance creation' }
-Scenario class >> title: aString [ 
-	^self new title: aString; yourself
+Scenario class >> title: aString [
+
+	^ self new
+		  title: aString;
+		  yourself
 ]
 
 { #category : #steps }
@@ -24,6 +27,12 @@ Scenario >> addStep: aSymbol text: aString [
 { #category : #steps }
 Scenario >> given: aString [ 
 	self addStep: #Given text: aString 
+]
+
+{ #category : #testing }
+Scenario >> hasSteps [
+
+	^ steps isNotEmpty
 ]
 
 { #category : #initialization }
@@ -49,7 +58,8 @@ Scenario >> runScenarioWith: stepDefinitions [
 
 { #category : #accessing }
 Scenario >> steps [
-	^steps
+
+	^ steps
 ]
 
 { #category : #steps }

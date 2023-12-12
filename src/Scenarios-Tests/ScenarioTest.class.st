@@ -5,6 +5,17 @@ Class {
 }
 
 { #category : #tests }
+ScenarioTest >> testInstanceCreation [
+
+	|newInstance|
+	newInstance := Scenario title: 'My scenario'.
+	
+	self assert: newInstance title equals: 'My scenario'.
+	self deny: newInstance hasSteps
+
+]
+
+{ #category : #'tests - sample' }
 ScenarioTest >> testScenarioHasOneOrMoreSteps [
 
 	| step |
@@ -14,7 +25,7 @@ ScenarioTest >> testScenarioHasOneOrMoreSteps [
 		assert: step text equals: 'A scenario with steps'
 ]
 
-{ #category : #tests }
+{ #category : #'tests - sample' }
 ScenarioTest >> testScenarioHasTitle [
 
 	| scenario |
