@@ -20,7 +20,7 @@ Feature class >> isAbstract [
 	^ self == Feature
 ]
 
-{ #category : #running }
+{ #category : #'private - building' }
 Feature >> buildScenarioFromMethod: aMethod [
 
 	| newScenario |
@@ -30,7 +30,7 @@ Feature >> buildScenarioFromMethod: aMethod [
 	
 ]
 
-{ #category : #running }
+{ #category : #'private - building' }
 Feature >> buildScenarios [
 
 	scenarios := OrderedCollection new.
@@ -39,7 +39,7 @@ Feature >> buildScenarios [
 			scenarios add: (self buildScenarioFromMethod: each) ] ]
 ]
 
-{ #category : #running }
+{ #category : #'private - building' }
 Feature >> buildStepDefinitions [
 	stepDefinitions := OrderedCollection new.
 	(Smalltalk organization classesInCategory: self class category) do: [:each | (each inheritsFrom: ScenarioStepDefinition) ifTrue: [ stepDefinitions addAll: (each buildStepDefinitions) ] ]
