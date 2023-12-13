@@ -1,3 +1,6 @@
+"
+Definition of a ScenarioStep
+"
 Class {
 	#name : #ScenarioStepDefinition,
 	#superclass : #TestAsserter,

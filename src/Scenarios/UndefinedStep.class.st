@@ -1,5 +1,8 @@
+"
+An undefined step
+"
 Class {
 	#name : #UndefinedStep,
 	#superclass : #Exception,
-	#category : #'Scenarios-Base'
+	#category : #'Scenarios-Errors'
 }
