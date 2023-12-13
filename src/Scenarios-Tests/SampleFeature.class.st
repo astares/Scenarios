@@ -1,3 +1,6 @@
+"
+A sample feature with sample scenarios used as an example and within tests
+"
 Class {
 	#name : #SampleFeature,
 	#superclass : #Feature,
