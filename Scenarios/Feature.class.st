@@ -2,7 +2,6 @@ Class {
 	#name : #Feature,
 	#superclass : #Object,
 	#instVars : [
-		'result',
 		'scenarios',
 		'scenario',
 		'stepDefinitions'
@@ -43,14 +42,19 @@ Feature >> given: aString [
 { #category : #running }
 Feature >> run [
 
-	result := ScenarioResult new.
+	| result |
+	result := FeatureResult new.
 	self run: result.
 	^ result
 ]
 
 { #category : #running }
-Feature >> run: aScenarioResult [ 
-	self scenarios do: [:each | each run: aScenarioResult with: self stepDefinitions].
+Feature >> run: aFeatureResult [ 
+	self scenarios do: [:each | | result |
+		result := ScenarioResult new.
+		aFeatureResult addResult: result.
+		each run: result with: self stepDefinitions.
+		].
 ]
 
 { #category : #querying }
