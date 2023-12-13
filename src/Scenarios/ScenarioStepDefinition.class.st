@@ -21,6 +21,12 @@ ScenarioStepDefinition class >> define: aString perfoming: aSymbol [
 		yourself
 ]
 
+{ #category : #testing }
+ScenarioStepDefinition class >> isAbstract [
+
+	^ self == ScenarioStepDefinition
+]
+
 { #category : #accessing }
 ScenarioStepDefinition >> definition [
 	^ definition
