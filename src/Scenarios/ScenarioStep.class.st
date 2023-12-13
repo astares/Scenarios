@@ -18,10 +18,37 @@ ScenarioStep class >> type: aSymbol text: aString [
 		yourself
 ]
 
+{ #category : #testing }
+ScenarioStep >> hasText [ 
+
+	^ text isNotNil and: [ text isNotEmpty ]
+]
+
+{ #category : #testing }
+ScenarioStep >> hasType [
+
+	^ type isSymbol
+]
+
+{ #category : #printing }
+ScenarioStep >> printOn: aStream [
+
+	self hasType ifFalse: [ ^ super printOn: aStream ].
+	self hasText ifFalse: [ ^ super printOn: aStream ].	
+		
+	aStream
+		nextPutAll: self type asString;
+		space;
+		nextPutAll: self text
+]
+
 { #category : #running }
-ScenarioStep >> runStepWith: stepDefinitions [ 
+ScenarioStep >> runStepWith: stepDefinitions [
+
 	| definition |
-	definition := stepDefinitions detect: [ :each | each definition = text ] ifNone: [ UndefinedStep signal ].
+	definition := stepDefinitions
+		              detect: [ :each | each definition = text ]
+		              ifNone: [ UndefinedStep signal ].
 	definition valueWith: text
 ]
 
@@ -31,11 +58,23 @@ ScenarioStep >> text [
 ]
 
 { #category : #accessing }
+ScenarioStep >> text: anObject [
+
+	text := anObject
+]
+
+{ #category : #accessing }
 ScenarioStep >> type [
 	^ type
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
+ScenarioStep >> type: anObject [
+
+	type := anObject
+]
+
+{ #category : #'private - initialization' }
 ScenarioStep >> type: aSymbol text: aString [
 	type := aSymbol.
 	text := aString
