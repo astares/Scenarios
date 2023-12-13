@@ -40,7 +40,7 @@ Scenario >> hasSteps [
 { #category : #testing }
 Scenario >> hasTitle [
 
-	^ title notNil and: [ title isNotEmpty ]
+	^ title isNotNil and: [ title isNotEmpty ]
 ]
 
 { #category : #initialization }
