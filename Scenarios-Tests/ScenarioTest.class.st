@@ -5,6 +5,16 @@ Class {
 }
 
 { #category : #tests }
+ScenarioTest >> testRunningScenarioProducesResult [
+
+	| result scenario |
+	scenario := TestFeature new scenarioNamed:
+		            'Running a scenario'.
+	result := scenario runWith: TestStepDefinitions buildStepDefinitions.
+	self assert: result resultCount equals: scenario steps size
+]
+
+{ #category : #tests }
 ScenarioTest >> testScenarioHasOneOrMoreSteps [
 
 	| step |

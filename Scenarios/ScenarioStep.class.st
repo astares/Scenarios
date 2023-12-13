@@ -16,6 +16,17 @@ ScenarioStep class >> type: aSymbol text: aString [
 ]
 
 { #category : #running }
+ScenarioStep >> run: aScenarioResult with: stepDefinitions [
+
+[ [  
+	self runStepWith: stepDefinitions.
+	aScenarioResult addPass: self ] on: UndefinedStep
+			do: [ :ex | aScenarioResult addUndefined: self ] ]
+			on: TestFailure , Error
+			do: [ :ex | aScenarioResult addFailure: self ] 
+]
+
+{ #category : #running }
 ScenarioStep >> runStepWith: stepDefinitions [ 
 	| definition |
 	definition := stepDefinitions detect: [ :each | each definition = text ] ifNone: [ UndefinedStep signal ].

@@ -29,13 +29,20 @@ Scenario >> initialize [
 ]
 
 { #category : #running }
-Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [ 
-	aScenarioResult runScenario: self with: aCollectionOfStepDefinitions
+Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
+
+	steps do: [ :each |
+		each run: aScenarioResult with: aCollectionOfStepDefinitions.
+		 ]
 ]
 
 { #category : #running }
-Scenario >> runScenarioWith: stepDefinitions [ 
-	steps do: [ :each | each runStepWith: stepDefinitions] 
+Scenario >> runWith: aCollectionOfStepDefinitions [
+
+	| result |
+	result := ScenarioResult new.
+	self run: result with: aCollectionOfStepDefinitions.
+	^ result
 ]
 
 { #category : #accessing }

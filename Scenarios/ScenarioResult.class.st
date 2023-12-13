@@ -62,19 +62,6 @@ ScenarioResult >> resultCount [
 	^ undefined size + passed size + failed size
 ]
 
-{ #category : #running }
-ScenarioResult >> runScenario: aScenario with: aCollectionOfStepDefitions [
-
-	[
-	[
-	aScenario runScenarioWith: aCollectionOfStepDefitions.
-	self addPass: aScenario ]
-		on: UndefinedStep
-		do: [ :ex | self addUndefined: aScenario ] ]
-		on: TestFailure , Error
-		do: [ self addFailure: aScenario ]
-]
-
 { #category : #accessing }
 ScenarioResult >> undefinedCount [
 

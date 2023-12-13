@@ -46,7 +46,7 @@ FeatureResult >> printOn: aStream [
 { #category : #accessing }
 FeatureResult >> resultCount [
 
-	^results inject: 0 into: [ :sum :each | sum + each resultCount ]
+	^results size
 ]
 
 { #category : #accessing }
