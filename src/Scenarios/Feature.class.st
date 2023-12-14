@@ -20,6 +20,14 @@ Feature class >> isAbstract [
 	^ self == Feature
 ]
 
+{ #category : #building }
+Feature >> build [
+
+	^ self
+		buildScenarios;
+		buildStepDefinitions
+]
+
 { #category : #'private - building' }
 Feature >> buildScenarioFromMethod: aMethod [
 
