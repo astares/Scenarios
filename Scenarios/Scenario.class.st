@@ -31,9 +31,11 @@ Scenario >> initialize [
 { #category : #running }
 Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 
+	| shouldRun |
+	shouldRun := true.
 	steps do: [ :each |
-		each run: aScenarioResult with: aCollectionOfStepDefinitions.
-		 ]
+		[shouldRun ifTrue: [each run: aScenarioResult with: aCollectionOfStepDefinitions] ifFalse: [ each skip: aScenarioResult ]]
+			on: UndefinedStep, TestFailure, Error do: [ :ex | shouldRun := false ] ]
 ]
 
 { #category : #running }

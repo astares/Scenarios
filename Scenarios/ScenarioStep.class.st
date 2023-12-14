@@ -18,12 +18,14 @@ ScenarioStep class >> type: aSymbol text: aString [
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
-[ [  
+	[
+	[
 	self runStepWith: stepDefinitions.
-	aScenarioResult addPass: self ] on: UndefinedStep
-			do: [ :ex | aScenarioResult addUndefined: self ] ]
-			on: TestFailure , Error
-			do: [ :ex | aScenarioResult addFailure: self ] 
+	aScenarioResult addPass: self ]
+		on: UndefinedStep
+		do: [ :ex | aScenarioResult addUndefined: self. ex pass ] ]
+		on: TestFailure , Error
+		do: [ :ex | aScenarioResult addFailure: self. ex pass ]
 ]
 
 { #category : #running }
@@ -31,6 +33,12 @@ ScenarioStep >> runStepWith: stepDefinitions [
 	| definition |
 	definition := stepDefinitions detect: [ :each | each definition = text ] ifNone: [ UndefinedStep signal ].
 	definition valueWith: text
+]
+
+{ #category : #running }
+ScenarioStep >> skip: aScenarioResult [
+
+	aScenarioResult addSkipped: self
 ]
 
 { #category : #accessing }

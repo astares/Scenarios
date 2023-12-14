@@ -40,13 +40,21 @@ FeatureResult >> printOn: aStream [
 		nextPutAll: self failedCount asString;
 		nextPutAll: ' failed, ';
 		nextPutAll: self undefinedCount asString;
-		nextPutAll: ' undefined.'
+		nextPutAll: ' undefined, ';
+		nextPutAll: self skippedCount asString;
+		nextPutAll: ' skipped.'
 ]
 
 { #category : #accessing }
 FeatureResult >> resultCount [
 
 	^results size
+]
+
+{ #category : #accessing }
+FeatureResult >> skippedCount [
+
+	^ results inject: 0 into: [ :sum :each | sum + each skippedCount ]
 ]
 
 { #category : #accessing }

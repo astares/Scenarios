@@ -32,3 +32,13 @@ ScenarioTest >> testScenarioHasTitle [
 		         'A Scenario has one or more steps').
 	self assert: scenario title equals: 'A Scenario has one or more steps'
 ]
+
+{ #category : #tests }
+ScenarioTest >> testScenarioStepsGetSkipped [
+
+	| scenario result |
+	scenario := TestFeature new scenarioNamed:
+		            'A Scenario has one or more steps'.
+	result := scenario runWith: TestStepDefinitions buildStepDefinitions.
+	self assert: result skippedCount equals: 2
+]
