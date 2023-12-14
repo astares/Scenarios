@@ -27,15 +27,14 @@ Feature >> buildScenarioFromMethod: aMethod [
 	newScenario := Scenario title: (aMethod pragmaAt: #Scenario:) arguments first.
 	self withScenario: newScenario do: [ self perform: aMethod selector ].
 	^newScenario
-	
 ]
 
 { #category : #'private - building' }
 Feature >> buildScenarios [
 
 	scenarios := OrderedCollection new.
-	self class methods do: [ :each | 
-		(each hasPragmaNamed: #Scenario:) ifTrue: [ 
+	self class methods do: [ :each |
+		(each hasPragmaNamed: #Scenario:) ifTrue: [
 			scenarios add: (self buildScenarioFromMethod: each) ] ]
 ]
 
@@ -46,7 +45,8 @@ Feature >> buildStepDefinitions [
 ]
 
 { #category : #keywords }
-Feature >> given: aString [ 
+Feature >> given: aString [
+
 	scenario given: aString
 ]
 
@@ -63,39 +63,46 @@ Feature >> run [
 Feature >> run: aScenarioResult [
 	"Run the feature (receiver) by using the given object to store the result"
 
-	self scenarios do: [:each | each run: aScenarioResult with: self stepDefinitions].
+	self scenarios do: [:each | each run: aScenarioResult with: self stepDefinitions]
 ]
 
 { #category : #querying }
-Feature >> scenarioNamed: aString [ 
-	^ self scenarios detect: [ :each | each title = aString ] ifNone: [  ]
+Feature >> scenarioNamed: aString [
+
+	^ self scenarios
+		  detect: [ :each | each title = aString ]
+		  ifNone: [  ]
 ]
 
 { #category : #accessing }
 Feature >> scenarios [
 
 	scenarios ifNil: [ self buildScenarios ].
-	^scenarios
+	^ scenarios
 ]
 
 { #category : #accessing }
 Feature >> stepDefinitions [
-	stepDefinitions ifNil: [self buildStepDefinitions].
-	^stepDefinitions
+
+	stepDefinitions ifNil: [ self buildStepDefinitions ].
+	^ stepDefinitions
 ]
 
 { #category : #keywords }
-Feature >> then: aString [ 
+Feature >> then: aString [
+
 	scenario then: aString
 ]
 
 { #category : #keywords }
-Feature >> when: aString [ 
-	scenario when: aString.
+Feature >> when: aString [
+
+	scenario when: aString
 ]
 
 { #category : #private }
-Feature >> withScenario: aScenario do: aBlock [ 
-	[scenario := aScenario.
-	aBlock value] ensure: [ scenario := nil ]
+Feature >> withScenario: aScenario do: aBlock [
+
+	[ scenario := aScenario.
+	  aBlock value ] ensure: [ scenario := nil ]
 ]
