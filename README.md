@@ -29,4 +29,7 @@ Steps will be defined in a separate class from the feature. This class will need
 Each step can be defined in its own method tagged with one of the #`Given:`, `#When:`, or `#Then:` pragmas.
 
 ## Running features and scenarios
-At the moment, there is no ScenarioRunner. Features need to be run manually from a Playground. For example, we can run the `TestFeature` feature by printing or inspecting `TestFeature new run` in a Playground.
+At the moment, there is a SimpleScenarioRunner that needs to be triggered from a Playground.
+
+To execute all Features, evaluate `SimpleScenarioRunner new runAllFeatures` in a Playground.
+To execute only one Feature, send `#run` to a class instance. Example: evaluate `TestFeature new run` in a Playground to execute all scenarios in class `TestFeature`.
