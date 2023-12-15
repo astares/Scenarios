@@ -85,6 +85,12 @@ Scenario >> then: aString [
 	self addStep: #Then text: aString.
 ]
 
+{ #category : #comparision }
+Scenario >> threeWayCompareTo: aScenario [
+
+	^ self title threeWayCompareTo: aScenario title
+]
+
 { #category : #accessing }
 Scenario >> title [
 	^ title
