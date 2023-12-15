@@ -19,7 +19,7 @@ FeatureResult >> failedCount [
 	^(results reject: [ :each | each isPassed ]) size
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FeatureResult >> failedStepCount [
 	^results inject: 0 into: [ :sum :each | sum + each failedCount ]
 ]
@@ -36,7 +36,7 @@ FeatureResult >> passedCount [
 	^(results select: [ :each | each isPassed ]) size
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FeatureResult >> passedStepCount [
 	^results inject: 0 into: [ :sum :each | sum + each passedCount ]
 ]
@@ -70,19 +70,19 @@ FeatureResult >> resultCount [
 	^results size
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FeatureResult >> skippedStepCount [
 
 	^ results inject: 0 into: [ :sum :each | sum + each skippedCount ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FeatureResult >> stepCount [
 	
 	^results inject: 0 into: [ :sum :each | sum + each resultCount ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FeatureResult >> undefinedStepCount [
 
 	^ results inject: 0 into: [ :sum :each | sum + each undefinedCount ]
