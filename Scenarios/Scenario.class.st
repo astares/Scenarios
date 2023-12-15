@@ -34,8 +34,7 @@ Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 
 	aScenarioResult addResults: steps.
 	steps do: [ :each |
-		[
-		each run: aScenarioResult with: aCollectionOfStepDefinitions ]
+		[ each run: aScenarioResult with: aCollectionOfStepDefinitions ]
 			on: UndefinedStep , TestFailure , Error
 			do: [ :ex | ^ self ] ]
 ]
@@ -44,7 +43,7 @@ Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 Scenario >> runWith: aCollectionOfStepDefinitions [
 
 	| result |
-	result := ScenarioResult new.
+	result := ScenarioResult scenario: self.
 	self run: result with: aCollectionOfStepDefinitions.
 	^ result
 ]

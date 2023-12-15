@@ -49,12 +49,13 @@ Feature >> run [
 ]
 
 { #category : #running }
-Feature >> run: aFeatureResult [ 
-	self scenarios do: [:each | | result |
-		result := ScenarioResult new.
+Feature >> run: aFeatureResult [
+
+	self scenarios do: [ :each |
+		| result |
+		result := ScenarioResult scenario: each.
 		aFeatureResult addResult: result.
-		each run: result with: self stepDefinitions.
-		].
+		each run: result with: self stepDefinitions ]
 ]
 
 { #category : #querying }

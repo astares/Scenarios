@@ -2,33 +2,40 @@ Class {
 	#name : #ScenarioResult,
 	#superclass : #Object,
 	#instVars : [
-		'stepResults'
+		'scenario',
+		'results'
 	],
 	#category : #Scenarios
 }
 
+{ #category : #'instance creation' }
+ScenarioResult class >> scenario: aScenario [
+
+	^self new scenario: aScenario; yourself
+]
+
 { #category : #adding }
 ScenarioResult >> addResults: aCollectionOfSteps [
 
-	^ stepResults addAll: aCollectionOfSteps
+	^ results addAll: aCollectionOfSteps
 ]
 
 { #category : #accessing }
 ScenarioResult >> failedCount [
 
-	^ (stepResults select: [ :each | each isFailed ]) size
+	^ (results select: [ :each | each isFailed ]) size
 ]
 
-{ #category : #initialization }
-ScenarioResult >> initialize [
+{ #category : #testing }
+ScenarioResult >> isPassed [
 
-	stepResults := OrderedCollection new
+	^results allSatisfy: [ :each | each isPassed ]
 ]
 
 { #category : #accessing }
 ScenarioResult >> passedCount [
 
-	^ (stepResults select: [ :each | each isPassed ]) size
+	^ (results select: [ :each | each isPassed ]) size
 ]
 
 { #category : #printing }
@@ -40,23 +47,32 @@ ScenarioResult >> printOn: aStream [
 		nextPutAll: self failedCount asString;
 		nextPutAll: ' failed, ';
 		nextPutAll: self undefinedCount asString;
-		nextPutAll: ' undefined.'
+		nextPutAll: ' undefined, ';
+		nextPutAll: self skippedCount asString;
+		nextPutAll: ' skipped.'
 ]
 
 { #category : #accessing }
 ScenarioResult >> resultCount [
 
-	^ stepResults size
+	^ results size
+]
+
+{ #category : #accessing }
+ScenarioResult >> scenario: aScenario [
+
+	results := OrderedCollection new.
+	scenario := aScenario
 ]
 
 { #category : #accessing }
 ScenarioResult >> skippedCount [
 
-	^ (stepResults select: [ :each | each isSkipped ]) size
+	^ (results select: [ :each | each isSkipped ]) size
 ]
 
 { #category : #accessing }
 ScenarioResult >> undefinedCount [
 
-	^ (stepResults select: [ :each | each isUndefined ]) size
+	^ (results select: [ :each | each isUndefined ]) size
 ]

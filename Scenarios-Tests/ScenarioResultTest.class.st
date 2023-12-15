@@ -7,9 +7,10 @@ Class {
 { #category : #tests }
 ScenarioResultTest >> testPrintingToString [
 
-	| result |
-	result := TestFeature new run.
+	| result scenario |
+	scenario := TestFeature new scenarioNamed: 'Running a scenario'.
+	result := scenario runWith: TestStepDefinitions buildStepDefinitions.
 	self
 		assert: result printString
-		equals: '7 passed, 2 failed, 1 undefined, 2 skipped.'
+		equals: '3 passed, 0 failed, 0 undefined, 0 skipped.'
 ]

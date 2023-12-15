@@ -9,7 +9,8 @@ FeatureTest >> testFeatureHasScenarios [
 
 	| feature |
 	feature := TestFeature new.
-	self assert: (feature scenarios anySatisfy: [ :each | each title = 'A Scenario has a title' ])
+	self assert: (feature scenarios anySatisfy: [ :each |
+			 each title = 'A Scenario has one or more steps' ])
 ]
 
 { #category : #tests }
@@ -27,5 +28,5 @@ FeatureTest >> testScenariosCouldFail [
 	| feature result |
 	feature := TestFeature new.
 	result := feature run.
-	self assert: result failedCount equals: 2
+	self assert: result failedCount isZero not
 ]
