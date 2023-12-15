@@ -17,14 +17,15 @@ BaselineOfScenarios >> baseline: spec [
 		spec
 			package: 'Scenarios';
 			package: 'Scenarios-UI' with: [ spec requires: 'Scenarios' ];
-			package: 'Scenarios-Tools' with: [ spec requires: 'Scenarios-UI' ];
+			package: 'Scenarios-DrTests' with: [ spec requires: 'Scenarios-UI' ];
+			package: 'Scenarios-Tools' with: [ spec requires: #('Scenarios-DrTests' 'Scenarios-UI')];
 			package: 'Scenarios-Tests' with: [ spec requires: 'Scenarios' ].
 
 		"Groups"
 		spec
 			group:	 'Core' with: #('Scenarios');
 			group: 'UI' with: #('Scenarios-UI');
-			group: 'Tools' with: #('Scenarios-Tools');
+			group: 'Tools' with: #('Scenarios-DrTests' 'Scenarios-Tools');
 			group:	 'Tests' with: #('Scenarios-Tests');
 			group: 'CI' with: #('Core' 'UI' 'Tools' 'Tests').
 

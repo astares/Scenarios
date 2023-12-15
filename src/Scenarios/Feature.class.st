@@ -20,6 +20,12 @@ Feature class >> isAbstract [
 	^ self == Feature
 ]
 
+{ #category : #testing }
+Feature class >> isFeature [
+
+	^ true
+]
+
 { #category : #building }
 Feature >> build [
 

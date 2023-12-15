@@ -23,6 +23,14 @@ FeatureTest >> testFeatureHasScenarios [
 			 each title = 'A scenario has a title' ])
 ]
 
+{ #category : #'tests - other' }
+FeatureTest >> testIsFeature [
+	"Feature should be a feature"
+
+	self assert: Feature isFeature.
+	self deny: Object isFeature
+]
+
 { #category : #tests }
 FeatureTest >> testRunningFeatureProducesResult [
 	

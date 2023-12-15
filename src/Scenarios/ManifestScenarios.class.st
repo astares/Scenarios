@@ -13,6 +13,13 @@ ManifestScenarios class >> ruleBadMessageRule2V1FalsePositive [
 ]
 
 { #category : #'code-critics' }
+ManifestScenarios class >> ruleClassNameInSelectorRuleV1FalsePositive [
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGMethodDefinition #(#'Feature class' #isFeature #true)) #'2023-12-15T01:53:06.744+01:00') )
+]
+
+{ #category : #'code-critics' }
 ManifestScenarios class >> ruleInconsistentMethodClassificationRuleV1FalsePositive [
 
 	<ignoreForCoverage>
