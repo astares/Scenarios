@@ -13,6 +13,12 @@ ScenarioResult >> addResult: aStep [
 	^stepResults add: aStep
 ]
 
+{ #category : #adding }
+ScenarioResult >> addResults: aCollectionOfSteps [
+
+	^ stepResults addAll: aCollectionOfSteps
+]
+
 { #category : #accessing }
 ScenarioResult >> failedCount [
 

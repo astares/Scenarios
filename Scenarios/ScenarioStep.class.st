@@ -48,12 +48,10 @@ ScenarioStep >> result [
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
-	aScenarioResult addResult: self. 
 	[
 	[
 	self runStepWith: stepDefinitions.
-	self bePassed.
-	]
+	self bePassed ]
 		on: UndefinedStep
 		do: [ :ex |
 			self beUndefined.

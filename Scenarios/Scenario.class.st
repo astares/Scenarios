@@ -3,8 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'title',
-		'steps',
-		'stepRunner'
+		'steps'
 	],
 	#category : #Scenarios
 }
@@ -27,33 +26,18 @@ Scenario >> given: aString [
 { #category : #initialization }
 Scenario >> initialize [
 
-	steps := OrderedCollection new.
-	self prepareToExecuteAllSteps
-]
-
-{ #category : #running }
-Scenario >> prepareToExecuteAllSteps [
-
-	stepRunner := self stepExecutionBehavior
-]
-
-{ #category : #running }
-Scenario >> prepareToSkipAllSteps [
-
-	^ stepRunner := self stepSkipBehavior
+	steps := OrderedCollection new
 ]
 
 { #category : #running }
 Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 
+	aScenarioResult addResults: steps.
 	steps do: [ :each |
 		[
-		stepRunner
-			value: each
-			value: aScenarioResult
-			value: aCollectionOfStepDefinitions ]
+		each run: aScenarioResult with: aCollectionOfStepDefinitions ]
 			on: UndefinedStep , TestFailure , Error
-			do: [ :ex | self prepareToSkipAllSteps ] ]
+			do: [ :ex | ^ self ] ]
 ]
 
 { #category : #running }
@@ -63,20 +47,6 @@ Scenario >> runWith: aCollectionOfStepDefinitions [
 	result := ScenarioResult new.
 	self run: result with: aCollectionOfStepDefinitions.
 	^ result
-]
-
-{ #category : #running }
-Scenario >> stepExecutionBehavior [
-
-^[ :step :result :definitions | step
-		          run: result
-		          with: definitions ]
-]
-
-{ #category : #running }
-Scenario >> stepSkipBehavior [
-
-	^ [ :step :result :definitions | result addResult: step ]
 ]
 
 { #category : #accessing }
