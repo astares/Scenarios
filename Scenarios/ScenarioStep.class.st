@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'type',
-		'text'
+		'text',
+		'result'
 	],
 	#category : #Scenarios
 }
@@ -15,17 +16,52 @@ ScenarioStep class >> type: aSymbol text: aString [
 		yourself
 ]
 
+{ #category : #results }
+ScenarioStep >> beFailed [
+
+	result := #failed
+]
+
+{ #category : #results }
+ScenarioStep >> beNotRun [
+
+	result := #notRun
+]
+
+{ #category : #results }
+ScenarioStep >> bePassed [
+
+	result := #passed
+]
+
+{ #category : #results }
+ScenarioStep >> beUndefined [
+
+	result := #undefined
+]
+
+{ #category : #accessing }
+ScenarioStep >> result [
+	^result
+]
+
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
+	aScenarioResult addResult: self. 
 	[
 	[
 	self runStepWith: stepDefinitions.
-	aScenarioResult addPass: self ]
+	self bePassed.
+	]
 		on: UndefinedStep
-		do: [ :ex | aScenarioResult addUndefined: self. ex pass ] ]
+		do: [ :ex |
+			self beUndefined.
+			ex pass ] ]
 		on: TestFailure , Error
-		do: [ :ex | aScenarioResult addFailure: self. ex pass ]
+		do: [ :ex |
+			self beFailed.
+			ex pass ]
 ]
 
 { #category : #running }
@@ -33,12 +69,6 @@ ScenarioStep >> runStepWith: stepDefinitions [
 	| definition |
 	definition := stepDefinitions detect: [ :each | each definition = text ] ifNone: [ UndefinedStep signal ].
 	definition valueWith: text
-]
-
-{ #category : #running }
-ScenarioStep >> skip: aScenarioResult [
-
-	aScenarioResult addSkipped: self
 ]
 
 { #category : #accessing }
@@ -53,7 +83,8 @@ ScenarioStep >> type [
 
 { #category : #initialization }
 ScenarioStep >> type: aSymbol text: aString [
+
 	type := aSymbol.
-	text := aString
-	
+	text := aString.
+	self beNotRun
 ]

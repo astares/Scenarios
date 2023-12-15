@@ -75,7 +75,8 @@ Scenario >> stepExecutionBehavior [
 
 { #category : #running }
 Scenario >> stepSkipBehavior [
-^[ :step :result :definitions | step skip: result ]
+
+	^ [ :step :result :definitions | result addResult: step ]
 ]
 
 { #category : #accessing }
