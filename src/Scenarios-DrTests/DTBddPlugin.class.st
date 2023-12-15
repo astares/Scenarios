@@ -38,6 +38,12 @@ DTBddPlugin >> itemsToBeAnalysedFor: packagesSelected [
 			[ :p | p definedClasses select: [ :c | c isFeature ] ]
 ]
 
+{ #category : #api }
+DTBddPlugin >> packagesAvailableForAnalysis [
+	^ RPackage organizer packages
+		select: [ :p | p definedClasses anySatisfy: [ :c | c isFeature ] ]
+]
+
 { #category : #accessing }
 DTBddPlugin >> pragmaForResultTrees [
 
