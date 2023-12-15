@@ -32,11 +32,13 @@ ScenarioStepDefinition class >> isAbstract [
 
 { #category : #accessing }
 ScenarioStepDefinition >> definition [
+
 	^ definition
 ]
 
 { #category : #initialization }
-ScenarioStepDefinition >> definition: aString selector: aSymbol [ 
+ScenarioStepDefinition >> definition: aString selector: aSymbol [
+
 	definition := aString.
 	selector := aSymbol
 ]
@@ -46,6 +48,12 @@ ScenarioStepDefinition >> resources [
 	"We do not make use of test resources - so we ignore the subclass responsibility to implement this method"
 	
 	^ self shouldNotImplement 
+]
+
+{ #category : #accessing }
+ScenarioStepDefinition >> selector [
+
+	^ selector
 ]
 
 { #category : #ignored }
