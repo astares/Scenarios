@@ -1,7 +1,7 @@
 Class {
 	#name : #DTBddPlugin,
 	#superclass : #DrTestsPlugin,
-	#category : #'Scenarios-DrTests'
+	#category : #'Scenarios-DrTests-Plugin'
 }
 
 { #category : #'api - accessing' }
@@ -26,6 +26,12 @@ DTBddPlugin class >> weight [
 DTBddPlugin >> allowMiniDrTests [
 
 	^ true
+]
+
+{ #category : #'configuration building' }
+DTBddPlugin >> buildConfigurationFrom: aDrTests [
+
+	^ DTBddConfiguration items: aDrTests selectedItems packages: aDrTests packagesSelected
 ]
 
 { #category : #accessing }
@@ -61,6 +67,27 @@ DTBddPlugin >> runForConfiguration: aDTpluginConfiguration [
 	^ self pluginResultClass new
 			testResults: (self runTestSuites: {aDTpluginConfiguration asTestSuite});
 			yourself
+]
+
+{ #category : #api }
+DTBddPlugin >> runSuite: aTestSuite withResult: aResult [
+	aTestSuite
+		when: TestAnnouncement
+		do: [ :testAnnouncement |
+			self announceStatusChanged: ('Running test {1}.' format: {testAnnouncement test asString}) ].
+	[ aTestSuite run: aResult ]
+		ensure: [ aTestSuite unsubscribe: TestAnnouncement ]
+]
+
+{ #category : #api }
+DTBddPlugin >> runTestSuites: testSuites [
+	| result |
+	result := TestAsserter classForTestResult new.
+	CurrentExecutionEnvironment
+		runTestsBy: [ testSuites
+				do: [ :testSuite | self runSuite: testSuite withResult: result ]
+				displayingProgress: 'Running Tests' ].
+	^ result
 ]
 
 { #category : #api }

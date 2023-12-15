@@ -1,7 +1,10 @@
 Class {
 	#name : #DTBddResult,
 	#superclass : #DTPluginResult,
-	#category : #'Scenarios-DrTests'
+	#instVars : [
+		'testsResult'
+	],
+	#category : #'Scenarios-DrTests-Plugin'
 }
 
 { #category : #accessing }
@@ -26,4 +29,9 @@ DTBddResult >> buildTreeForUI [
 				subResults: (self buildLeavesFrom: self undefined type: DTTestResultType skipped).
 		};
 		yourself
+]
+
+{ #category : #tests }
+DTBddResult >> testResults: anObject [
+	testsResult := anObject
 ]
