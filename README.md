@@ -78,5 +78,21 @@ failingScenario
 ```
 
 ### Running features and scenarios
-At the moment, there is no ScenarioRunner. Maybe later a specific runner can be implemented as a plugin to DrTest tool of Pharo.
-Features need to be run manually from a Playground. For example, we can run the `SampleFeature` feature by printing or inspecting `SampleFeature new run` in a Playground.
+At the moment, there is a SimpleScenarioRunner that needs to be triggered from a Playground.
+
+To execute all Features, evaluate 
+
+```Smalltalk
+SimpleScenarioRunner new runAllFeatures 
+```
+
+in a Playground. 
+
+To execute only one `Feature`, send #run to a class instance. 
+Example: evaluate 
+
+```Smalltalk
+SampleFeature new run
+``` 
+
+in a Playground to execute all scenarios in class `SampleFeature`.
