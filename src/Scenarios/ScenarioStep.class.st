@@ -88,7 +88,7 @@ ScenarioStep >> isFailed [
 { #category : #testing }
 ScenarioStep >> isPassed [
 
-	^result == self class passedResult
+	^ result == self class passedResult
 ]
 
 { #category : #testing }

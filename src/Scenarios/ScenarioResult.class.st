@@ -37,6 +37,12 @@ ScenarioResult >> failedCount [
 	^ self failed size
 ]
 
+{ #category : #testing }
+ScenarioResult >> hasFailed [
+
+	^ results anySatisfy: [ :each | each isFailed ]
+]
+
 { #category : #initialization }
 ScenarioResult >> initialize [
 
