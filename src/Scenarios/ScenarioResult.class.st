@@ -11,21 +11,21 @@ Class {
 }
 
 { #category : #adding }
-ScenarioResult >> addResult: aStep [
-
-	^ stepResults add: aStep
-]
-
-{ #category : #adding }
 ScenarioResult >> addResults: aCollectionOfSteps [
 
 	^ stepResults addAll: aCollectionOfSteps
 ]
 
 { #category : #accessing }
+ScenarioResult >> failed [
+
+	^ stepResults select: [ :each | each isFailed ]
+]
+
+{ #category : #accessing }
 ScenarioResult >> failedCount [
 
-	^ (stepResults select: [ :each | each result == #failed ]) size
+	^ self failed size
 ]
 
 { #category : #initialization }
@@ -36,9 +36,15 @@ ScenarioResult >> initialize [
 ]
 
 { #category : #accessing }
+ScenarioResult >> passed [
+
+	^ stepResults select: [ :each | each isPassed ]
+]
+
+{ #category : #accessing }
 ScenarioResult >> passedCount [
 
-	^ (stepResults select: [ :each | each result == #passed ]) size
+	^ self passed size
 ]
 
 { #category : #printing }
@@ -60,13 +66,25 @@ ScenarioResult >> resultCount [
 ]
 
 { #category : #accessing }
+ScenarioResult >> skipped [
+
+	^ stepResults select: [ :each | each isSkipped ]
+]
+
+{ #category : #accessing }
 ScenarioResult >> skippedCount [
 
-	^ (stepResults select: [ :each | each result == #notRun ]) size
+	^ self skipped size
+]
+
+{ #category : #accessing }
+ScenarioResult >> undefined [
+
+	^ stepResults select: [ :each | each isUndefined ]
 ]
 
 { #category : #accessing }
 ScenarioResult >> undefinedCount [
 
-	^ (stepResults select: [ :each | each result == #undefined ]) size
+	^ self undefined size
 ]

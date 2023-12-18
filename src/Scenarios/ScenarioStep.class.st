@@ -12,6 +12,24 @@ Class {
 	#category : #'Scenarios-Base'
 }
 
+{ #category : #constants }
+ScenarioStep class >> failedResult [
+
+	^ #failed
+]
+
+{ #category : #constants }
+ScenarioStep class >> notRunResult [
+
+	^ #notRun
+]
+
+{ #category : #constants }
+ScenarioStep class >> passedResult [
+
+	^ #passed
+]
+
 { #category : #'instance creation' }
 ScenarioStep class >> type: aSymbol text: aString [ 
 	^self new
@@ -19,28 +37,34 @@ ScenarioStep class >> type: aSymbol text: aString [
 		yourself
 ]
 
+{ #category : #constants }
+ScenarioStep class >> undefinedResult [
+
+	^ #undefined
+]
+
 { #category : #results }
 ScenarioStep >> beFailed [
 
-	result := #failed
+	result := self class failedResult
 ]
 
 { #category : #results }
 ScenarioStep >> beNotRun [
 
-	result := #notRun
+	result := self class notRunResult
 ]
 
 { #category : #results }
 ScenarioStep >> bePassed [
 
-	result := #passed
+	result := self class passedResult
 ]
 
 { #category : #results }
 ScenarioStep >> beUndefined [
 
-	result := #undefined
+	result := self class undefinedResult
 ]
 
 { #category : #testing }
@@ -55,6 +79,30 @@ ScenarioStep >> hasType [
 	^ type isSymbol
 ]
 
+{ #category : #testing }
+ScenarioStep >> isFailed [
+
+	^ result == self class failedResult
+]
+
+{ #category : #testing }
+ScenarioStep >> isPassed [
+
+	^result == self class passedResult
+]
+
+{ #category : #testing }
+ScenarioStep >> isSkipped [
+
+	^ result == self class notRunResult
+]
+
+{ #category : #testing }
+ScenarioStep >> isUndefined [
+
+	^ result == self class undefinedResult
+]
+
 { #category : #printing }
 ScenarioStep >> printOn: aStream [
 
@@ -65,12 +113,6 @@ ScenarioStep >> printOn: aStream [
 		nextPutAll: self type asString;
 		space;
 		nextPutAll: self text
-]
-
-{ #category : #accessing }
-ScenarioStep >> result [
-
-	^ result
 ]
 
 { #category : #running }
@@ -135,4 +177,10 @@ ScenarioStep >> type: aSymbol text: aString [
 	text := aString.
 
 	self beNotRun
+]
+
+{ #category : #testing }
+ScenarioStep >> wasNotRun [
+
+	^ result == self class notRunResult
 ]

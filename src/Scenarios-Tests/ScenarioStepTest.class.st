@@ -31,7 +31,7 @@ ScenarioStepTest >> testNewStepIsNotRun [
 
 	| step |
 	step := ScenarioStep type: #Given text: 'A sample step'.
-	self assert: step result equals: #notRun
+	self assert: step wasNotRun
 ]
 
 { #category : #'tests - printing' }

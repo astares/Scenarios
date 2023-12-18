@@ -19,7 +19,7 @@ ScenarioResult >> inspectionFailed: aBuilder [
 			evaluated: [ :each | StObjectPrinter asTruncatedTextFrom: each ];
 			sortFunction: #printString ascending;
 			yourself);
-		items: failed asOrderedCollection;
+		items: self failed asOrderedCollection;
 		yourself
 ]
 
@@ -42,7 +42,30 @@ ScenarioResult >> inspectionPassed: aBuilder [
 			evaluated: [ :each | StObjectPrinter asTruncatedTextFrom: each ];
 			sortFunction: #printString ascending;
 			yourself);
-		items: passed asOrderedCollection;
+		items: self passed asOrderedCollection;
+		yourself
+]
+
+{ #category : #'*Scenarios-Tools' }
+ScenarioResult >> inspectionSkipped: aBuilder [
+	<inspectorPresentationOrder: 3 title: 'Skipped'>
+
+	^ aBuilder newTable
+		addColumn: (SpIndexTableColumn new
+			title: 'Index';
+			sortFunction: #yourself ascending;
+			beNotExpandable;
+			yourself);
+		addColumn: (SpImageTableColumn new
+				evaluated: #icon;
+				beNotExpandable;
+				yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Value';
+			evaluated: [ :each | StObjectPrinter asTruncatedTextFrom: each ];
+			sortFunction: #printString ascending;
+			yourself);
+		items: self skipped asOrderedCollection;
 		yourself
 ]
 
@@ -65,6 +88,6 @@ ScenarioResult >> inspectionUndefined: aBuilder [
 			evaluated: [ :each | StObjectPrinter asTruncatedTextFrom: each ];
 			sortFunction: #printString ascending;
 			yourself);
-		items: undefined asOrderedCollection;
+		items: self undefined asOrderedCollection;
 		yourself
 ]
