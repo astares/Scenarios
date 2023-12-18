@@ -15,7 +15,6 @@ BDDTestCase class >> for: aClass [
 { #category : #accessing }
 BDDTestCase >> scenarioNode: aClass [
 
-
 	scenarioNode := aClass
 ]
 
