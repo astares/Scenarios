@@ -1,4 +1,6 @@
 # Scenarios
+[![Pharo](https://img.shields.io/static/v1?style=for-the-badge&message=Pharo&color=3297d4&logo=Harbor&logoColor=FFFFFF&label=)](https://www.pharo.org) 
+[![BDD](https://img.shields.io/static/v1?style=for-the-badge&message=BDD&color=044a64&logo=BDD&logoColor=FFFFFF&label=)](https://en.wikipedia.org/wiki/Behavior-driven_development)
 
 ## What's this?
 **_Scenarios_** is a framework to support [Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) (BDD) and [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test-driven_development) (ATDD) in [Pharo](https://www.pharo.org).
