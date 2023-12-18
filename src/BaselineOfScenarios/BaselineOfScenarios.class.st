@@ -27,7 +27,7 @@ BaselineOfScenarios >> baseline: spec [
 			group: 'UI' with: #('Scenarios-UI');
 			group: 'Tools' with: #('Scenarios-DrTests' 'Scenarios-Tools');
 			group:	 'Tests' with: #('Scenarios-Tests');
-			group: 'CI' with: #('Core' 'UI' 'Tools' 'Tests').
+			group: 'CI' with: #('Tests').
 
 		"Virtual groups"
 		spec
