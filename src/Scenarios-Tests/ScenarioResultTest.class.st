@@ -21,6 +21,17 @@ ScenarioResultTest >> testPrintStringForSample [
 ]
 
 { #category : #tests }
+ScenarioResultTest >> testPrintingToString [
+
+	| result scenario |
+	scenario := SampleFeature new scenarioNamed: 'Running a scenario'.
+	result := scenario runWith: SampleStepDefinitions buildStepDefinitions.
+	self
+		assert: result printString
+		equals: '3 passed, 0 failed, 0 undefined, 0 skipped.'
+]
+
+{ #category : #tests }
 ScenarioResultTest >> testinstanceCreation [
 
 	|newInstance|
