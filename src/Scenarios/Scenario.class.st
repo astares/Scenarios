@@ -48,20 +48,7 @@ Scenario >> hasTitle [
 Scenario >> initialize [
 
 	super initialize.
-	steps := OrderedCollection new.
-	self prepareToExecuteAllSteps
-]
-
-{ #category : #running }
-Scenario >> prepareToExecuteAllSteps [
-
-	stepRunner := self stepExecutionBehavior
-]
-
-{ #category : #running }
-Scenario >> prepareToSkipAllSteps [
-
-	^ stepRunner := self stepSkipBehavior
+	steps := OrderedCollection new
 ]
 
 { #category : #printing }
@@ -78,14 +65,12 @@ Scenario >> printOn: aStream [
 Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 	"Run the scenario (receiver) by using the given object to store the result together with the given step definitions"
 
+	aScenarioResult addResults: steps.
 	steps do: [ :each |
 		[
-		stepRunner
-			value: each
-			value: aScenarioResult
-			value: aCollectionOfStepDefinitions ]
+		each run: aScenarioResult with: aCollectionOfStepDefinitions ]
 			on: UndefinedStep , TestFailure , Error
-			do: [ :ex | self prepareToSkipAllSteps ] ]
+			do: [ :ex | ^ self ] ]
 ]
 
 { #category : #running }
@@ -95,20 +80,6 @@ Scenario >> runWith: aCollectionOfStepDefinitions [
 	result := ScenarioResult new.
 	self run: result with: aCollectionOfStepDefinitions.
 	^ result
-]
-
-{ #category : #running }
-Scenario >> stepExecutionBehavior [
-
-	^[:step :result :definitions | step
-		          run: result
-		          with: definitions ]
-]
-
-{ #category : #running }
-Scenario >> stepSkipBehavior [
-
-	^ [ :step :result :definitions | result addResult: step ]
 ]
 
 { #category : #accessing }

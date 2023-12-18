@@ -76,15 +76,14 @@ ScenarioStep >> result [
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
-	aScenarioResult addResult: self.
-	[[
-		self runStepWith: stepDefinitions.
-		self bePassed.
-		]
-			on: UndefinedStep
-			do: [ :ex |
-				self beUndefined.
-				ex pass ] ]
+	[
+	[
+	self runStepWith: stepDefinitions.
+	self bePassed ]
+		on: UndefinedStep
+		do: [ :ex |
+			self beUndefined.
+			ex pass ] ]
 		on: TestFailure , Error
 		do: [ :ex |
 			self beFailed.
