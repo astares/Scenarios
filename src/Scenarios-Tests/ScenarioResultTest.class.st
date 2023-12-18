@@ -17,7 +17,7 @@ ScenarioResultTest >> testPrintStringForSample [
 	result := SampleFeature new run.
 	self
 		assert: result printString
-		equals: '7 passed, 2 failed, 3 undefined.'
+		equals: '7 passed, 2 failed, 1 undefined, 2 skipped.'
 ]
 
 { #category : #tests }

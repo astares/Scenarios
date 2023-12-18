@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'undefined',
 		'passed',
-		'failed'
+		'failed',
+		'skipped'
 	],
 	#category : #'Scenarios-Base'
 }
@@ -22,6 +23,12 @@ ScenarioResult >> addFailure: aScenario [
 ScenarioResult >> addPass: aScenario [
 
 	passed add: aScenario
+]
+
+{ #category : #running }
+ScenarioResult >> addSkipped: aScenario [
+
+	skipped add: aScenario
 ]
 
 { #category : #running }
@@ -42,7 +49,8 @@ ScenarioResult >> initialize [
 	super initialize.
 	undefined := OrderedCollection new.
 	passed := OrderedCollection new.
-	failed := OrderedCollection new
+	failed := OrderedCollection new.
+	skipped := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -66,7 +74,13 @@ ScenarioResult >> printOn: aStream [
 { #category : #accessing }
 ScenarioResult >> resultCount [
 
-	^ undefined size + passed size + failed size
+	^ undefined size + passed size + failed size + skipped size
+]
+
+{ #category : #accessing }
+ScenarioResult >> skippedCount [
+
+	^ skipped size
 ]
 
 { #category : #accessing }

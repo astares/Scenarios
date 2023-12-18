@@ -46,12 +46,12 @@ ScenarioStep >> printOn: aStream [
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
 	[[
-		self runStepWith: stepDefinitions.
-		aScenarioResult addPass: self ]
-			on: UndefinedStep
-			do: [ :ex | aScenarioResult addUndefined: self ] ]
+	self runStepWith: stepDefinitions.
+	aScenarioResult addPass: self ]
+		on: UndefinedStep
+		do: [ :ex | aScenarioResult addUndefined: self. ex pass ] ]
 		on: TestFailure , Error
-		do: [ :ex | aScenarioResult addFailure: self ]
+		do: [ :ex | aScenarioResult addFailure: self. ex pass ]
 ]
 
 { #category : #running }
@@ -62,6 +62,12 @@ ScenarioStep >> runStepWith: stepDefinitions [
 		              detect: [ :each | each definition = text ]
 		              ifNone: [ UndefinedStep signal ].
 	definition valueWith: text
+]
+
+{ #category : #running }
+ScenarioStep >> skip: aScenarioResult [
+
+	aScenarioResult addSkipped: self
 ]
 
 { #category : #accessing }

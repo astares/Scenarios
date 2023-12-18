@@ -64,8 +64,11 @@ Scenario >> printOn: aStream [
 Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 	"Run the scenario (receiver) by using the given object to store the result together with the given step definitions"
 
+	| shouldRun |
+	shouldRun := true.
 	steps do: [ :each |
-		each run: aScenarioResult with: aCollectionOfStepDefinitions ]
+		[shouldRun ifTrue: [each run: aScenarioResult with: aCollectionOfStepDefinitions] ifFalse: [ each skip: aScenarioResult ]]
+			on: UndefinedStep, TestFailure, Error do: [ :ex | shouldRun := false ] ]
 ]
 
 { #category : #running }
