@@ -1,3 +1,6 @@
+"
+A specific configuration for Dr. Test to support BDD
+"
 Class {
 	#name : #DTBddConfiguration,
 	#superclass : #DTPluginConfiguration,

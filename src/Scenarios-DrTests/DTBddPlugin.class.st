@@ -1,3 +1,6 @@
+"
+A plugin for Dr. Test for BDD
+"
 Class {
 	#name : #DTBddPlugin,
 	#superclass : #DrTestsPlugin,

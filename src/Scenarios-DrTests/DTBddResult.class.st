@@ -1,3 +1,6 @@
+"
+A result container for Dr. Test
+"
 Class {
 	#name : #DTBddResult,
 	#superclass : #DTPluginResult,
@@ -10,7 +13,7 @@ Class {
 { #category : #accessing }
 DTBddResult >> buildTreeForUI [
 	<dtBehaviorDrivenDevelopmentResultTreeNamed: 'Grouped by type of result' order: 1>
-	
+
 	^ DTTreeNode new
 		subResults: {
 			DTTreeNode new
@@ -24,9 +27,6 @@ DTBddResult >> buildTreeForUI [
 				subResults: (self buildLeavesFrom: self failed type: DTTestResultType fail);
 				startExpanded;
 				displayColorIfNotEmpty: TestResult defaultColorBackGroundForFailureTest.
-			DTTreeNode new
-				name: DTTestResultType skipped pluralName;
-				subResults: (self buildLeavesFrom: self undefined type: DTTestResultType skipped).
 		};
 		yourself
 ]
