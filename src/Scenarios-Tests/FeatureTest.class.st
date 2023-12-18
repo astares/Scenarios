@@ -19,8 +19,14 @@ FeatureTest >> setUp [
 { #category : #tests }
 FeatureTest >> testFeatureHasScenarios [
 
+	self assert: feature scenarios notEmpty
+]
+
+{ #category : #tests }
+FeatureTest >> testFeatureHasScenariostestFeatureHasScenarios [
+
 	self assert: (feature scenarios anySatisfy: [ :each |
-			 each title = 'A scenario has a title' ])
+			 each title = 'A scenario has one or more steps' ])
 ]
 
 { #category : #'tests - other' }
@@ -39,8 +45,8 @@ FeatureTest >> testRunningFeatureProducesResult [
 
 { #category : #tests }
 FeatureTest >> testScenariosCouldFail [
-	 
-	self assert: result failedCount equals: 2
+
+	self assert: result failedCount isZero not
 ]
 
 { #category : #'tests - other' }

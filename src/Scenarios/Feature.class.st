@@ -77,11 +77,11 @@ Feature >> run [
 Feature >> run: aFeatureResult [
 	"Run the feature (receiver) by using the given object to store the result"
 
-	self scenarios do: [:each | | result |
-		result := ScenarioResult new.
+	self scenarios do: [ :each |
+		| result |
+		result := ScenarioResult scenario: each.
 		aFeatureResult addResult: result.
-		each run: result with: self stepDefinitions.
-		]
+		each run: result with: self stepDefinitions ]
 ]
 
 { #category : #querying }

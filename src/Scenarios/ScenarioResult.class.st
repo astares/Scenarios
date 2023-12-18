@@ -5,21 +5,30 @@ Class {
 	#name : #ScenarioResult,
 	#superclass : #Object,
 	#instVars : [
-		'stepResults'
+		'scenario',
+		'results'
 	],
 	#category : #'Scenarios-Base'
 }
 
+{ #category : #'instance creation' }
+ScenarioResult class >> scenario: aScenario [
+
+	^ self new
+		  scenario: aScenario;
+		  yourself
+]
+
 { #category : #adding }
 ScenarioResult >> addResults: aCollectionOfSteps [
 
-	^ stepResults addAll: aCollectionOfSteps
+	^ results addAll: aCollectionOfSteps
 ]
 
 { #category : #accessing }
 ScenarioResult >> failed [
 
-	^ stepResults select: [ :each | each isFailed ]
+	^ results select: [ :each | each isFailed ]
 ]
 
 { #category : #accessing }
@@ -32,13 +41,19 @@ ScenarioResult >> failedCount [
 ScenarioResult >> initialize [
 
 	super initialize.
-	stepResults := OrderedCollection new
+	results := OrderedCollection new
+]
+
+{ #category : #testing }
+ScenarioResult >> isPassed [
+
+	^ results allSatisfy: [ :each | each isPassed ]
 ]
 
 { #category : #accessing }
 ScenarioResult >> passed [
 
-	^ stepResults select: [ :each | each isPassed ]
+	^ results select: [ :each | each isPassed ]
 ]
 
 { #category : #accessing }
@@ -56,19 +71,28 @@ ScenarioResult >> printOn: aStream [
 		nextPutAll: self failedCount asString;
 		nextPutAll: ' failed, ';
 		nextPutAll: self undefinedCount asString;
-		nextPutAll: ' undefined.'
+		nextPutAll: ' undefined, ';
+		nextPutAll: self skippedCount asString;
+		nextPutAll: ' skipped.'
 ]
 
 { #category : #accessing }
 ScenarioResult >> resultCount [
 
-	^ stepResults size
+	^ results size
+]
+
+{ #category : #accessing }
+ScenarioResult >> scenario: aScenario [
+
+	results := OrderedCollection new.
+	scenario := aScenario
 ]
 
 { #category : #accessing }
 ScenarioResult >> skipped [
 
-	^ stepResults select: [ :each | each isSkipped ]
+	^ results select: [ :each | each isSkipped ]
 ]
 
 { #category : #accessing }
@@ -80,7 +104,7 @@ ScenarioResult >> skippedCount [
 { #category : #accessing }
 ScenarioResult >> undefined [
 
-	^ stepResults select: [ :each | each isUndefined ]
+	^ results select: [ :each | each isUndefined ]
 ]
 
 { #category : #accessing }

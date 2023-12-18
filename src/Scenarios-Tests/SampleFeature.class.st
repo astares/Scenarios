@@ -46,8 +46,3 @@ SampleFeature >> scenarioHasSteps [
 		when: 'A Scenario object gets created from it';
 		then: 'The Scenario object has all the steps'
 ]
-
-{ #category : #scenarios }
-SampleFeature >> scenarioHasTitle [
-	<Scenario: 'A scenario has a title'>
-]

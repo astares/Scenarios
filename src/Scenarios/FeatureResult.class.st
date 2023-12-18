@@ -19,7 +19,7 @@ FeatureResult >> addResult: aScenarioResult [
 { #category : #accessing }
 FeatureResult >> failedCount [
 
-	^ results inject: 0 into: [ :sum :each | sum + each failedCount ]
+	^ (results reject: [ :each | each isPassed ]) size
 ]
 
 { #category : #initialization }
@@ -32,7 +32,7 @@ FeatureResult >> initialize [
 { #category : #accessing }
 FeatureResult >> passedCount [
 
-	^ results inject: 0 into: [ :sum :each | sum + each passedCount ]
+	^(results select: [ :each | each isPassed ]) size
 ]
 
 { #category : #printing }
@@ -42,27 +42,11 @@ FeatureResult >> printOn: aStream [
 		nextPutAll: self passedCount asString;
 		nextPutAll: ' passed, ';
 		nextPutAll: self failedCount asString;
-		nextPutAll: ' failed, ';
-		nextPutAll: self undefinedCount asString;
-		nextPutAll: ' undefined, ';
-		nextPutAll: self skippedCount asString;
-		nextPutAll: ' skipped.'
+		nextPutAll: ' failed.'
 ]
 
 { #category : #accessing }
 FeatureResult >> resultCount [
 
 	^ results size
-]
-
-{ #category : #accessing }
-FeatureResult >> skippedCount [
-
-	^ results inject: 0 into: [ :sum :each | sum + each skippedCount ]
-]
-
-{ #category : #accessing }
-FeatureResult >> undefinedCount [
-
-	^ results inject: 0 into: [ :sum :each | sum + each undefinedCount ]
 ]
