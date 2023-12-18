@@ -43,6 +43,18 @@ ScenarioStep >> printOn: aStream [
 ]
 
 { #category : #running }
+ScenarioStep >> run: aScenarioResult with: stepDefinitions [
+
+	[[
+		self runStepWith: stepDefinitions.
+		aScenarioResult addPass: self ]
+			on: UndefinedStep
+			do: [ :ex | aScenarioResult addUndefined: self ] ]
+		on: TestFailure , Error
+		do: [ :ex | aScenarioResult addFailure: self ]
+]
+
+{ #category : #running }
 ScenarioStep >> runStepWith: stepDefinitions [
 
 	| definition |

@@ -48,6 +48,16 @@ ScenarioTest >> testPrintStringWithoutTitle [
 	self assert: Scenario new printString equals: 'a Scenario'
 ]
 
+{ #category : #'tests - result' }
+ScenarioTest >> testRunningScenarioProducesResult [
+
+	| result scenario |
+	scenario := SampleFeature new scenarioNamed:
+		            'Running a scenario'.
+	result := scenario runWith: SampleStepDefinitions buildStepDefinitions.
+	self assert: result resultCount equals: scenario steps size
+]
+
 { #category : #'tests - sample' }
 ScenarioTest >> testSampleScenarioHasOneOrMoreSteps [
 

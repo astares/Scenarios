@@ -10,10 +10,16 @@ Class {
 	#category : #'Scenarios-Base'
 }
 
+{ #category : #adding }
+FeatureResult >> addResult: aScenarioResult [
+
+	^ results add: aScenarioResult
+]
+
 { #category : #accessing }
 FeatureResult >> failedCount [
 
-	^ (results reject: [ :each | each isPassed ]) size
+	^ results inject: 0 into: [ :sum :each | sum + each failedCount ]
 ]
 
 { #category : #initialization }
@@ -44,7 +50,7 @@ FeatureResult >> printOn: aStream [
 { #category : #accessing }
 FeatureResult >> resultCount [
 
-	^ results inject: 0 into: [ :sum :each | sum + each resultCount ]
+	^ results size
 ]
 
 { #category : #accessing }
