@@ -26,6 +26,14 @@ ScenarioStepTest >> testInstanceCreation [
 
 ]
 
+{ #category : #tests }
+ScenarioStepTest >> testNewStepIsNotRun [
+
+	| step |
+	step := ScenarioStep type: #Given text: 'A sample step'.
+	self assert: step result equals: #notRun
+]
+
 { #category : #'tests - printing' }
 ScenarioStepTest >> testPrintString [
 

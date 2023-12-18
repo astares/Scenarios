@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'type',
-		'text'
+		'text',
+		'result'
 	],
 	#category : #'Scenarios-Base'
 }
@@ -16,6 +17,30 @@ ScenarioStep class >> type: aSymbol text: aString [
 	^self new
 		type: aSymbol text: aString;
 		yourself
+]
+
+{ #category : #results }
+ScenarioStep >> beFailed [
+
+	result := #failed
+]
+
+{ #category : #results }
+ScenarioStep >> beNotRun [
+
+	result := #notRun
+]
+
+{ #category : #results }
+ScenarioStep >> bePassed [
+
+	result := #passed
+]
+
+{ #category : #results }
+ScenarioStep >> beUndefined [
+
+	result := #undefined
 ]
 
 { #category : #testing }
@@ -42,16 +67,28 @@ ScenarioStep >> printOn: aStream [
 		nextPutAll: self text
 ]
 
+{ #category : #accessing }
+ScenarioStep >> result [
+
+	^ result
+]
+
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
+	aScenarioResult addResult: self.
 	[[
-	self runStepWith: stepDefinitions.
-	aScenarioResult addPass: self ]
-		on: UndefinedStep
-		do: [ :ex | aScenarioResult addUndefined: self. ex pass ] ]
+		self runStepWith: stepDefinitions.
+		self bePassed.
+		]
+			on: UndefinedStep
+			do: [ :ex |
+				self beUndefined.
+				ex pass ] ]
 		on: TestFailure , Error
-		do: [ :ex | aScenarioResult addFailure: self. ex pass ]
+		do: [ :ex |
+			self beFailed.
+			ex pass ]
 ]
 
 { #category : #running }
@@ -94,7 +131,9 @@ ScenarioStep >> type: anObject [
 
 { #category : #'private - initialization' }
 ScenarioStep >> type: aSymbol text: aString [
+
 	type := aSymbol.
-	text := aString
-	
+	text := aString.
+
+	self beNotRun
 ]
