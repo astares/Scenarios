@@ -41,13 +41,13 @@ DTBddPlugin >> itemsToBeAnalysedFor: packagesSelected [
 
 	^ packagesSelected
 		flatCollect:
-			[ :p | p definedClasses select: [ :c | c isFeature ] ]
+			[ :p | p definedClasses select: [ :c | c isFeature and: [ c isAbstract not ] ] ]
 ]
 
 { #category : #api }
 DTBddPlugin >> packagesAvailableForAnalysis [
 	^ RPackage organizer packages
-		select: [ :p | p definedClasses anySatisfy: [ :c | c isFeature ] ]
+		select: [ :p | p definedClasses anySatisfy: [ :c | c isFeature and: [ c isAbstract not ]] ]
 ]
 
 { #category : #accessing }

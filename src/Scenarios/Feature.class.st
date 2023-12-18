@@ -23,7 +23,7 @@ Feature class >> isAbstract [
 { #category : #testing }
 Feature class >> isFeature [
 
-	^ self isAbstract not
+	^ true
 ]
 
 { #category : #building }
