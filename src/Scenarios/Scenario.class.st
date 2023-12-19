@@ -37,12 +37,6 @@ Scenario >> hasSteps [
 	^ steps isNotEmpty
 ]
 
-{ #category : #testing }
-Scenario >> hasTitle [
-
-	^ title isNotNil and: [ title isNotEmpty ]
-]
-
 { #category : #initialization }
 Scenario >> initialize [ 
 
@@ -53,11 +47,9 @@ Scenario >> initialize [
 { #category : #printing }
 Scenario >> printOn: aStream [
 
-	self hasTitle ifFalse: [ ^ super printOn: aStream ].
-	
 	aStream
 		nextPutAll: 'Scenario: ';
-		nextPutAll: self title
+		nextPutAll: self title asString
 ]
 
 { #category : #running }

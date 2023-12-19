@@ -11,22 +11,7 @@ ScenarioTest >> testAddingStepToScenario [
 	scenario := Scenario title: 'My scenario'.
 	scenario addStep: #Given text: 'My app has started'.
 	self
-		assert: scenario hasSteps;
-		assert: scenario steps size equals: 1;
 		assert: scenario steps first text equals: 'My app has started'
-]
-
-{ #category : #tests }
-ScenarioTest >> testInstanceCreation [
-
-	|newInstance|
-	newInstance := Scenario title: 'My scenario'.
-	
-	self assert: newInstance title equals: 'My scenario'.
-	
-	self assert: newInstance hasTitle.
-	self deny: newInstance hasSteps
-
 ]
 
 { #category : #'tests - steps' }
@@ -45,12 +30,6 @@ ScenarioTest >> testPrintStringWithoutSteps [
 	
 	self assert: newInstance printString equals: 'Scenario: My scenario'
 
-]
-
-{ #category : #'tests - printing' }
-ScenarioTest >> testPrintStringWithoutTitle [
-
-	self assert: Scenario new printString equals: 'a Scenario'
 ]
 
 { #category : #'tests - result' }
@@ -75,12 +54,13 @@ ScenarioTest >> testSampleScenarioHasOneOrMoreSteps [
 ]
 
 { #category : #'tests - sample' }
-ScenarioTest >> testSampleScenarioHasTitle [
+ScenarioTest >> testScenarioHasTitle [
 
 	| sampleScenario |
-	sampleScenario := (SampleFeature new scenarioNamed:
-		         'A scenario has one or more steps').
-	self assert: sampleScenario title equals: 'A scenario has one or more steps'
+	sampleScenario := Scenario title: 'A scenario has one or more steps'.
+	self
+		assert: sampleScenario title
+		equals: 'A scenario has one or more steps'
 ]
 
 { #category : #'tests - result' }

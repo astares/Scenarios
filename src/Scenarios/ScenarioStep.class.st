@@ -146,12 +146,6 @@ ScenarioStep >> runStepWith: stepDefinitions [
 	definition valueWith: text
 ]
 
-{ #category : #running }
-ScenarioStep >> skip: aScenarioResult [
-
-	aScenarioResult addSkipped: self
-]
-
 { #category : #accessing }
 ScenarioStep >> text [
 	^ text

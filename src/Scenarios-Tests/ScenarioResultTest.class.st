@@ -5,7 +5,17 @@ Class {
 }
 
 { #category : #tests }
-ScenarioResultTest >> testPrintString [
+ScenarioResultTest >> testCreatingInstance [
+
+	|newInstance|
+	newInstance := ScenarioResult scenario: Scenario new.
+	self 
+		assert: newInstance resultCount isZero		
+		
+]
+
+{ #category : #tests }
+ScenarioResultTest >> testPrintEmptyResultToString [
 
 	self
 		assert: (ScenarioResult scenario: Scenario new) printString
@@ -21,14 +31,4 @@ ScenarioResultTest >> testPrintingToString [
 	self
 		assert: result printString
 		equals: '3 passed, 0 failed, 0 undefined, 0 pending, 0 skipped.'
-]
-
-{ #category : #tests }
-ScenarioResultTest >> testinstanceCreation [
-
-	|newInstance|
-	newInstance := ScenarioResult scenario: Scenario new.
-	self 
-		assert: newInstance resultCount isZero		
-		
 ]

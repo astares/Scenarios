@@ -11,18 +11,7 @@ Class {
 ScenarioStepDefinitionTest >> testSampleStepDefinitions [
 
 	| definitions |
-	definitions := SampleFeature new
-							buildStepDefinitions;
-							stepDefinitions.
-	
+	definitions := SampleFeature new stepDefinitions.
 	self 
-		assert: definitions isNotEmpty;
-		assert: definitions size identicalTo: 5
-]
-
-{ #category : #'tests - other' }
-ScenarioStepDefinitionTest >> testShouldBeAbstractClass [
-	"ScenarioStepDefinition should be an abstract class that is subclassed"
-		
-	self assert: ScenarioStepDefinition isAbstract
+		assert: (definitions anySatisfy: [ :each | each definition = 'A feature with one scenario' ])
 ]

@@ -26,12 +26,10 @@ ScenarioStepTest >> testNewStepIsNotRun [
 ]
 
 { #category : #'tests - printing' }
-ScenarioStepTest >> testPrintString [
+ScenarioStepTest >> testPrintingToString [
 
 	| step |
 	step := ScenarioStep type: #Given text: 'My app has started'.
-	
-	self 
-		assert: step printString equals: 'Given My app has started'
-	
+
+	self assert: step printString equals: 'Given My app has started'
 ]
