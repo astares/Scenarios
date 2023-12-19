@@ -1,5 +1,5 @@
 "
-A simple runner for scenarios
+A simple runner for scenarios, meant to be used from a Playground.
 "
 Class {
 	#name : #SimpleScenarioRunner,
