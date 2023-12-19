@@ -43,6 +43,12 @@ ScenarioStepDefinition >> definition: aString selector: aSymbol [
 	selector := aSymbol
 ]
 
+{ #category : #running }
+ScenarioStepDefinition >> pending [
+
+	^PendingStep signal
+]
+
 { #category : #ignored }
 ScenarioStepDefinition >> resources [
 	"We do not make use of test resources - so we ignore the subclass responsibility to implement this method"

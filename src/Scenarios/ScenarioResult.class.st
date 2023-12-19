@@ -40,13 +40,19 @@ ScenarioResult >> failedCount [
 { #category : #testing }
 ScenarioResult >> hasFailed [
 
-	^ results anySatisfy: [ :each | each isFailed ]
+	^ results noneSatisfy: [ :each | each isPassed or: [ each isPending] ]
 ]
 
 { #category : #testing }
 ScenarioResult >> isPassed [
 
 	^ results allSatisfy: [ :each | each isPassed ]
+]
+
+{ #category : #testing }
+ScenarioResult >> isPending [ 
+
+	^ results anySatisfy: [ :each | each isPending ]
 ]
 
 { #category : #accessing }
@@ -61,6 +67,18 @@ ScenarioResult >> passedCount [
 	^ self passed size
 ]
 
+{ #category : #accessing }
+ScenarioResult >> pending [
+
+	^ results select: [ :each | each isPending ]
+]
+
+{ #category : #accessing }
+ScenarioResult >> pendingCount [
+
+	^ self pending size
+]
+
 { #category : #printing }
 ScenarioResult >> printOn: aStream [
 
@@ -71,6 +89,8 @@ ScenarioResult >> printOn: aStream [
 		nextPutAll: ' failed, ';
 		nextPutAll: self undefinedCount asString;
 		nextPutAll: ' undefined, ';
+		nextPutAll: self pendingCount asString;
+		nextPutAll: ' pending, ';
 		nextPutAll: self skippedCount asString;
 		nextPutAll: ' skipped.'
 ]

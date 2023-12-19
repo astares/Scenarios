@@ -84,6 +84,17 @@ ScenarioTest >> testSampleScenarioHasTitle [
 ]
 
 { #category : #'tests - result' }
+ScenarioTest >> testScenarioStepsCanBePending [
+
+	| scenario result |
+	scenario := SampleFeature new scenarioNamed:
+		            'A scenario can be pending'.
+	result := scenario runWith:
+		          SampleStepDefinitions buildStepDefinitions.
+	self assert: result pendingCount equals: 1
+]
+
+{ #category : #'tests - result' }
 ScenarioTest >> testScenarioStepsGetSkipped [
 
 	| scenario result |

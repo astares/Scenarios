@@ -43,6 +43,13 @@ Scenario >> hasTitle [
 	^ title isNotNil and: [ title isNotEmpty ]
 ]
 
+{ #category : #initialization }
+Scenario >> initialize [ 
+
+	super initialize.
+	steps := OrderedCollection new
+]
+
 { #category : #printing }
 Scenario >> printOn: aStream [
 
@@ -60,7 +67,7 @@ Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 	aScenarioResult addResults: steps.
 	steps do: [ :each |
 		[ each run: aScenarioResult with: aCollectionOfStepDefinitions ]
-			on: UndefinedStep , TestFailure , Error
+			on: UndefinedStep , PendingStep, TestFailure , Error
 			do: [ :ex | ^ self ] ]
 ]
 

@@ -26,6 +26,13 @@ SampleStepDefinitions >> featureWithOneScenario [
 ]
 
 { #category : #steps }
+SampleStepDefinitions >> pendingScenario [
+
+	<Then: 'The scenario could be pending'>
+	self pending
+]
+
+{ #category : #steps }
 SampleStepDefinitions >> runTheScenario [
 
 	<When: 'The feature is run'>

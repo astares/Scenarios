@@ -18,6 +18,16 @@ SampleFeature >> featureGetsRun [
 ]
 
 { #category : #scenarios }
+SampleFeature >> scenarioCanBePending [
+
+	<Scenario: 'A scenario can be pending'>
+	self
+		given: 'A feature with one scenario';
+		when: 'The feature is run';
+		then: 'The scenario could be pending'
+]
+
+{ #category : #scenarios }
 SampleFeature >> scenarioCanFail [
 	<Scenario: 'A scenario can fail'>
 

@@ -19,7 +19,7 @@ FeatureResult >> addResult: aScenarioResult [
 { #category : #accessing }
 FeatureResult >> failedCount [
 
-	^ (results reject: [ :each | each isPassed ]) size
+	^ (results reject: [ :each | each isPassed or: [ each isPending ] ]) size
 ]
 
 { #category : #accessing }
@@ -47,6 +47,18 @@ FeatureResult >> passedStepCount [
 	^ results inject: 0 into: [ :sum :each | sum + each passedCount ]
 ]
 
+{ #category : #accessing }
+FeatureResult >> pendingCount [
+
+	^ (results select: [ :each | each isPending ]) size
+]
+
+{ #category : #accessing }
+FeatureResult >> pendingStepCount [
+
+	^ results inject: 0 into: [ :sum :each | sum + each pendingCount ]
+]
+
 { #category : #printing }
 FeatureResult >> printOn: aStream [
 
@@ -55,6 +67,8 @@ FeatureResult >> printOn: aStream [
 		nextPutAll: ' scenarios (';
 		nextPutAll: self passedCount asString;
 		nextPutAll: ' passed, ';
+		nextPutAll: self pendingCount asString;
+		nextPutAll: ' pending, ';
 		nextPutAll: self failedCount asString;
 		nextPutAll: ' failed)';
 		nextPutAll: String cr;
@@ -66,6 +80,8 @@ FeatureResult >> printOn: aStream [
 		nextPutAll: ' failed, ';
 		nextPutAll: self undefinedStepCount asString;
 		nextPutAll: ' undefined, ';
+		nextPutAll: self pendingStepCount asString;
+		nextPutAll: ' pending, ';
 		nextPutAll: self skippedStepCount asString;
 		nextPutAll: ' skipped)'
 ]

@@ -7,7 +7,9 @@ Class {
 { #category : #tests }
 ScenarioResultTest >> testPrintString [
 
-	self assert: (ScenarioResult scenario: Scenario new) printString equals: '0 passed, 0 failed, 0 undefined, 0 skipped.'
+	self
+		assert: (ScenarioResult scenario: Scenario new) printString
+		equals: '0 passed, 0 failed, 0 undefined, 0 pending, 0 skipped.'
 ]
 
 { #category : #tests }
@@ -18,7 +20,7 @@ ScenarioResultTest >> testPrintingToString [
 	result := scenario runWith: SampleStepDefinitions buildStepDefinitions.
 	self
 		assert: result printString
-		equals: '3 passed, 0 failed, 0 undefined, 0 skipped.'
+		equals: '3 passed, 0 failed, 0 undefined, 0 pending, 0 skipped.'
 ]
 
 { #category : #tests }

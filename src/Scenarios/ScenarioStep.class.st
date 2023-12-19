@@ -30,6 +30,12 @@ ScenarioStep class >> passedResult [
 	^ #passed
 ]
 
+{ #category : #constants }
+ScenarioStep class >> pendingResult [
+
+	^ #pending
+]
+
 { #category : #'instance creation' }
 ScenarioStep class >> type: aSymbol text: aString [ 
 	^self new
@@ -62,6 +68,12 @@ ScenarioStep >> bePassed [
 ]
 
 { #category : #results }
+ScenarioStep >> bePending [
+
+	result := self class pendingResult
+]
+
+{ #category : #results }
 ScenarioStep >> beUndefined [
 
 	result := self class undefinedResult
@@ -77,6 +89,12 @@ ScenarioStep >> isFailed [
 ScenarioStep >> isPassed [
 
 	^ result == self class passedResult
+]
+
+{ #category : #testing }
+ScenarioStep >> isPending [
+
+	^ result == self class pendingResult
 ]
 
 { #category : #testing }
@@ -103,6 +121,7 @@ ScenarioStep >> printOn: aStream [
 { #category : #running }
 ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 
+	[  
 	[
 	[
 	self runStepWith: stepDefinitions.
@@ -110,7 +129,7 @@ ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 		on: UndefinedStep
 		do: [ :ex |
 			self beUndefined.
-			ex pass ] ]
+			ex pass ] ] on: PendingStep do: [:ex | self bePending. ex pass]]
 		on: TestFailure , Error
 		do: [ :ex |
 			self beFailed.

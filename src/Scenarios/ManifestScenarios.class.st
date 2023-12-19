@@ -34,6 +34,13 @@ ManifestScenarios class >> ruleLiteralArrayContainsSuspiciousTrueFalseOrNilRuleV
 ]
 
 { #category : #'code-critics' }
+ManifestScenarios class >> ruleStringConcatenationRuleV1FalsePositive [
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGMethodDefinition #(#Scenario #run:with: #false)) #'2023-12-19T22:24:08.098+00:00') )
+]
+
+{ #category : #'code-critics' }
 ManifestScenarios class >> ruleUsesAddRuleV1FalsePositive [
 
 	<ignoreForCoverage>

@@ -11,8 +11,8 @@ Class {
 FeatureResultTest >> testPrintingToString [
 
 	| result expected |
-	expected := '4 scenarios (1 passed, 3 failed)' , String cr
-	            , '12 steps (7 passed, 2 failed, 1 undefined, 2 skipped)'.
+	expected := '5 scenarios (1 passed, 1 pending, 3 failed)' , String cr
+	            , '15 steps (9 passed, 2 failed, 1 undefined, 1 pending, 2 skipped)'.
 	result := SampleFeature new run.
 	self assert: result printString equals: expected
 ]
