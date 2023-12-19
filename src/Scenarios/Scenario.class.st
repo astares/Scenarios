@@ -6,8 +6,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'title',
-		'steps',
-		'stepRunner'
+		'steps'
 	],
 	#category : #'Scenarios-Base'
 }
