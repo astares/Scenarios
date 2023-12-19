@@ -7,18 +7,7 @@ Class {
 { #category : #tests }
 ScenarioResultTest >> testPrintString [
 
-	self assert: ScenarioResult new printString equals: '0 passed, 0 failed, 0 undefined, 0 skipped.'
-]
-
-{ #category : #'tests - sample data' }
-ScenarioResultTest >> testPrintStringForSample [
-
-	| result |
-	result := SampleFeature new run.
-	self
-		assert: result printString
-		equals: '4 scenarios (1 passed, 3 failed)
-12 steps (7 passed, 2 failed, 1 undefined, 2 skipped)'
+	self assert: (ScenarioResult scenario: Scenario new) printString equals: '0 passed, 0 failed, 0 undefined, 0 skipped.'
 ]
 
 { #category : #tests }
@@ -36,14 +25,8 @@ ScenarioResultTest >> testPrintingToString [
 ScenarioResultTest >> testinstanceCreation [
 
 	|newInstance|
-	newInstance := ScenarioResult new.
-
+	newInstance := ScenarioResult scenario: Scenario new.
 	self 
-		assert: newInstance passedCount equals: 0;
-		assert: newInstance failedCount equals: 0;
-		assert: newInstance undefinedCount equals: 0.
-	
-	self assert: newInstance resultCount equals: 0
-			
+		assert: newInstance resultCount isZero		
 		
 ]

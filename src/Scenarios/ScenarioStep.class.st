@@ -68,18 +68,6 @@ ScenarioStep >> beUndefined [
 ]
 
 { #category : #testing }
-ScenarioStep >> hasText [ 
-
-	^ text isNotNil and: [ text isNotEmpty ]
-]
-
-{ #category : #testing }
-ScenarioStep >> hasType [
-
-	^ type isSymbol
-]
-
-{ #category : #testing }
 ScenarioStep >> isFailed [
 
 	^ result == self class failedResult
@@ -106,13 +94,10 @@ ScenarioStep >> isUndefined [
 { #category : #printing }
 ScenarioStep >> printOn: aStream [
 
-	self hasType ifFalse: [ ^ super printOn: aStream ].
-	self hasText ifFalse: [ ^ super printOn: aStream ].	
-		
 	aStream
 		nextPutAll: self type asString;
 		space;
-		nextPutAll: self text
+		nextPutAll: (self text ifNil: [ '' ])
 ]
 
 { #category : #running }
@@ -154,20 +139,8 @@ ScenarioStep >> text [
 ]
 
 { #category : #accessing }
-ScenarioStep >> text: anObject [
-
-	text := anObject
-]
-
-{ #category : #accessing }
 ScenarioStep >> type [
 	^ type
-]
-
-{ #category : #accessing }
-ScenarioStep >> type: anObject [
-
-	type := anObject
 ]
 
 { #category : #'private - initialization' }

@@ -43,13 +43,6 @@ Scenario >> hasTitle [
 	^ title isNotNil and: [ title isNotEmpty ]
 ]
 
-{ #category : #initialization }
-Scenario >> initialize [
-
-	super initialize.
-	steps := OrderedCollection new
-]
-
 { #category : #printing }
 Scenario >> printOn: aStream [
 
@@ -102,9 +95,11 @@ Scenario >> title [
 	^ title
 ]
 
-{ #category : #accessing }
-Scenario >> title: aString [ 
-	title := aString
+{ #category : #initialization }
+Scenario >> title: aString [
+
+	title := aString.
+	steps := OrderedCollection new
 ]
 
 { #category : #steps }

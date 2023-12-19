@@ -43,13 +43,6 @@ ScenarioResult >> hasFailed [
 	^ results anySatisfy: [ :each | each isFailed ]
 ]
 
-{ #category : #initialization }
-ScenarioResult >> initialize [
-
-	super initialize.
-	results := OrderedCollection new
-]
-
 { #category : #testing }
 ScenarioResult >> isPassed [
 
@@ -88,7 +81,7 @@ ScenarioResult >> resultCount [
 	^ results size
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 ScenarioResult >> scenario: aScenario [
 
 	results := OrderedCollection new.
