@@ -39,3 +39,10 @@ ManifestScenarios class >> ruleUsesAddRuleV1FalsePositive [
 	<ignoreForCoverage>
 	^ #(#(#(#RGMethodDefinition #(#FeatureResult #addResult: #false)) #'2023-12-18T22:35:20.494+01:00') )
 ]
+
+{ #category : #'code-critics' }
+ManifestScenarios class >> ruleVariableReferencedOnceRuleV1FalsePositive [
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGClassDefinition #(#ScenarioResult)) #'2023-12-19T15:31:36.995+00:00') )
+]
