@@ -8,21 +8,6 @@ Class {
 	#category : #Scenarios
 }
 
-{ #category : #'instance creation' }
-Scenario class >> title: aString [ 
-	^self new title: aString; yourself
-]
-
-{ #category : #steps }
-Scenario >> addStep: aSymbol text: aString [ 
-	steps add: (ScenarioStep type: aSymbol text: aString)
-]
-
-{ #category : #steps }
-Scenario >> given: aString [ 
-	self addStep: #Given text: aString 
-]
-
 { #category : #initialization }
 Scenario >> initialize [
 
@@ -46,29 +31,4 @@ Scenario >> runWith: aCollectionOfStepDefinitions [
 	result := ScenarioResult scenario: self.
 	self run: result with: aCollectionOfStepDefinitions.
 	^ result
-]
-
-{ #category : #accessing }
-Scenario >> steps [
-	^steps
-]
-
-{ #category : #steps }
-Scenario >> then: aString [ 
-	self addStep: #Then text: aString.
-]
-
-{ #category : #accessing }
-Scenario >> title [
-	^ title
-]
-
-{ #category : #initialization }
-Scenario >> title: aString [ 
-	title := aString
-]
-
-{ #category : #steps }
-Scenario >> when: aString [ 
-	self addStep: #When text: aString
 ]
