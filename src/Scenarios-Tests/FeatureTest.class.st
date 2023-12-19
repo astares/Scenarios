@@ -23,10 +23,9 @@ FeatureTest >> testFeatureHasScenarios [
 ]
 
 { #category : #tests }
-FeatureTest >> testFeatureHasScenariostestFeatureHasScenarios [
+FeatureTest >> testFeatureScenariosCanBeReferencedByName [
 
-	self assert: (feature scenarios anySatisfy: [ :each |
-			 each title = 'A scenario has one or more steps' ])
+	self assert: (feature scenarioNamed: 'A scenario has one or more steps') notNil
 ]
 
 { #category : #'tests - other' }
