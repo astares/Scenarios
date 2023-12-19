@@ -9,8 +9,7 @@ FeatureTest >> testFeatureHasScenarios [
 
 	| feature |
 	feature := TestFeature new.
-	self assert: (feature scenarios anySatisfy: [ :each |
-			 each title = 'A Scenario has one or more steps' ])
+	self assert: (feature scenarioNamed: 'A Scenario has one or more steps') notNil
 ]
 
 { #category : #tests }
