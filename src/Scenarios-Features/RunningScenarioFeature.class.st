@@ -8,10 +8,33 @@ Class {
 }
 
 { #category : #steps }
+RunningScenarioFeature >> allStepsPass [
+
+	<Then: 'all the steps pass'>
+	self pending
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> allStepsRunCorrectly [
 
 	<Given: 'all its steps run correctly'>
+	scenario
+		addStep: #Given text: 'a test scenario';
+		addStep: #When text: 'we run the test scenario';
+		addStep: #Then text: 'the test scenario passes'
+]
+
+{ #category : #steps }
+RunningScenarioFeature >> runTheScenario [
+
+	<When: 'we run the scenario'>
 	self pending
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> runTheTestScenario [
+
+	<When: 'we run the test scenario'>
 ]
 
 { #category : #scenarios }
@@ -26,8 +49,27 @@ RunningScenarioFeature >> runningAScenario [
 ]
 
 { #category : #steps }
+RunningScenarioFeature >> scenarioPasses [
+
+	<Then: 'the scenario passes'>
+	self pending
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> simpleScenario [
 
 	<Given: 'a simple scenario'>
 	scenario := Scenario title: 'a scenario' feature: self.
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> testScenario [
+
+	<Given: 'a test scenario'>
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> testScenarioPasses [
+
+	<Then: 'the test scenario passes'>
 ]
