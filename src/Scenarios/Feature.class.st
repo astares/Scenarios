@@ -26,6 +26,15 @@ Feature class >> isFeature [
 	^ true
 ]
 
+{ #category : #testing }
+Feature class >> isUsed [
+	"all my subclasses are used by me"
+
+	^ self name = 'Feature'
+		  ifTrue: [ super isUsed ]
+		  ifFalse: [ true ]
+]
+
 { #category : #building }
 Feature >> build [
 
