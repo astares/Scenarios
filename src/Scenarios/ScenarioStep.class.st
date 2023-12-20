@@ -121,17 +121,21 @@ ScenarioStep >> printOn: aStream [
 ]
 
 { #category : #running }
-ScenarioStep >> run: aScenarioResult with: stepDefinitions [
+ScenarioStep >> run: aScenarioResult [
 
-	[  
 	[
 	[
-	self runStepWith: stepDefinitions.
+	[
+	self runStep.
 	self bePassed ]
 		on: UndefinedStep
 		do: [ :ex |
 			self beUndefined.
-			ex pass ] ] on: PendingStep do: [:ex | self bePending. ex pass]]
+			ex pass ] ]
+		on: PendingStep
+		do: [ :ex |
+			self bePending.
+			ex pass ] ]
 		on: TestFailure , Error
 		do: [ :ex |
 			self beFailed.
@@ -139,10 +143,10 @@ ScenarioStep >> run: aScenarioResult with: stepDefinitions [
 ]
 
 { #category : #running }
-ScenarioStep >> runStepWith: stepDefinitions [
+ScenarioStep >> runStep [
 
 	| definition |
-	definition := stepDefinitions
+	definition := scenario feature stepDefinitions
 		              detect: [ :each | each definition = text ]
 		              ifNone: [ UndefinedStep signal ].
 	definition value: scenario feature with: text
