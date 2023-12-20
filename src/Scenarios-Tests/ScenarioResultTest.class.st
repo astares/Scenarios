@@ -27,7 +27,7 @@ ScenarioResultTest >> testPrintingToString [
 
 	| result scenario |
 	scenario := SampleFeature new scenarioNamed: 'Running a scenario'.
-	result := scenario runWith: SampleFeature new stepDefinitions.
+	result := scenario run.
 	self
 		assert: result printString
 		equals: '3 passed, 0 failed, 0 undefined, 0 pending, 0 skipped.'

@@ -60,6 +60,15 @@ Scenario >> printOn: aStream [
 ]
 
 { #category : #running }
+Scenario >> run [
+
+	| result |
+	result := ScenarioResult scenario: self.
+	self run: result.
+	^ result
+]
+
+{ #category : #running }
 Scenario >> run: aScenarioResult [
 	"Run the scenario (receiver) by using the given object to store the result" 
 
@@ -68,15 +77,6 @@ Scenario >> run: aScenarioResult [
 		[ each run ]
 			on: UndefinedStep , PendingStep , TestFailure , Error
 			do: [ :ex | ^ self ] ]
-]
-
-{ #category : #running }
-Scenario >> runWith: aCollectionOfStepDefinitions [
-
-	| result |
-	result := ScenarioResult scenario: self.
-	self run: result.
-	^ result
 ]
 
 { #category : #accessing }

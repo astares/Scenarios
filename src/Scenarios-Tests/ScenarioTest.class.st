@@ -36,9 +36,8 @@ ScenarioTest >> testPrintStringWithoutSteps [
 ScenarioTest >> testRunningScenarioProducesResult [
 
 	| result scenario |
-	scenario := SampleFeature new scenarioNamed:
-		            'Running a scenario'.
-	result := scenario runWith: SampleFeature new stepDefinitions.
+	scenario := SampleFeature new scenarioNamed: 'Running a scenario'.
+	result := scenario run.
 	self assert: result resultCount equals: scenario steps size
 ]
 
@@ -69,8 +68,7 @@ ScenarioTest >> testScenarioStepsCanBePending [
 	| scenario result |
 	scenario := SampleFeature new scenarioNamed:
 		            'A scenario can be pending'.
-	result := scenario runWith:
-		          SampleFeature new stepDefinitions.
+	result := scenario run.
 	self assert: result pendingCount equals: 1
 ]
 
@@ -80,7 +78,6 @@ ScenarioTest >> testScenarioStepsGetSkipped [
 	| scenario result |
 	scenario := SampleFeature new scenarioNamed:
 		            'A scenario has one or more steps'.
-	result := scenario runWith:
-		          SampleFeature new stepDefinitions.
+	result := scenario run.
 	self assert: result skippedCount equals: 2
 ]
