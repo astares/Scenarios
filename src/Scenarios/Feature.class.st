@@ -61,13 +61,9 @@ Feature >> buildStepDefinitions [
 				  each pragmas anySatisfy: [ :e |
 					  #( #Given: #When: #Then: ) includes: e selector ] ] ])
 			 collect: [ :each |
-				 ScenarioStepDefinition 
+				 ScenarioStepDefinition
 					 define: each pragmas first arguments first
 					 perfoming: each selector ]).
-	(Smalltalk organization classesInCategory: self class category) do: [
-		:each |
-		(each inheritsFrom: ScenarioStepDefinition) ifTrue: [
-			stepDefinitions addAll: each buildStepDefinitions ] ]
 ]
 
 { #category : #keywords }
