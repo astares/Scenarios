@@ -50,3 +50,9 @@ Feature >> inspectionStepDefinitions: aBuilder [
 		items: self stepDefinitions asOrderedCollection;
 		yourself
 ]
+
+{ #category : #'*Scenarios-Tools' }
+Feature >> runNamed: aString [
+
+	^(self scenarioNamed: aString) run
+]

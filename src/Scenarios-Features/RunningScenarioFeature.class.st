@@ -1,8 +1,18 @@
+"
+Basic scenarios for running features
+"
 Class {
 	#name : #RunningScenarioFeature,
 	#superclass : #Feature,
 	#category : #'Scenarios-Features'
 }
+
+{ #category : #steps }
+RunningScenarioFeature >> allStepsRunCorrectly [
+
+	<Given: 'all its steps run correctly'>
+	self pending
+]
 
 { #category : #scenarios }
 RunningScenarioFeature >> runningAScenario [
@@ -19,5 +29,5 @@ RunningScenarioFeature >> runningAScenario [
 RunningScenarioFeature >> simpleScenario [
 
 	<Given: 'a simple scenario'>
-	self pending
+	scenario := Scenario title: 'a scenario' feature: self.
 ]
