@@ -11,6 +11,16 @@ Class {
 }
 
 { #category : #steps }
+RunningScenarioFeature >> allStepsAreCorrectlyImplemented [
+
+	<Given: 'all its steps are correctly implemented'>
+	scenario
+		addStep: #Given text: 'a test scenario';
+		addStep: #When text: 'we run the test scenario';
+		addStep: #Then text: 'the test scenario passes'
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> allStepsPass [
 
 	<Then: 'all the steps pass'>
@@ -18,13 +28,13 @@ RunningScenarioFeature >> allStepsPass [
 ]
 
 { #category : #steps }
-RunningScenarioFeature >> allStepsRunCorrectly [
+RunningScenarioFeature >> oneStepIsImplementedIncorrectly [
 
-	<Given: 'all its steps run correctly'>
+	<Given: 'one step is implemented incorrectly'>
 	scenario
 		addStep: #Given text: 'a test scenario';
 		addStep: #When text: 'we run the test scenario';
-		addStep: #Then text: 'the test scenario passes'
+		addStep: #Then text: 'the test scenario fails'
 ]
 
 { #category : #steps }
@@ -52,6 +62,20 @@ RunningScenarioFeature >> runningAScenario [
 ]
 
 { #category : #steps }
+RunningScenarioFeature >> scenarioFails [
+
+	<Then: 'the scenario fails'>
+	self assert: result hasFailed
+]
+
+{ #category : #scenarios }
+RunningScenarioFeature >> scenarioFailure [
+
+	<Then: 'one step is marked as failed'>
+	self pending
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> scenarioPasses [
 
 	<Then: 'the scenario passes'>
@@ -69,6 +93,14 @@ RunningScenarioFeature >> simpleScenario [
 RunningScenarioFeature >> testScenario [
 
 	<Given: 'a test scenario'>
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> testScenarioFails [
+
+	<Then: 'the test scenario fails'>
+	self assert: false
+	
 ]
 
 { #category : #'steps - private' }

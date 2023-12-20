@@ -40,7 +40,7 @@ ScenarioResult >> failedCount [
 { #category : #testing }
 ScenarioResult >> hasFailed [
 
-	^ results noneSatisfy: [ :each | each isPassed or: [ each isPending] ]
+	^ results anySatisfy: [ :each | each isPassed not and: [ each isPending not] ]
 ]
 
 { #category : #testing }
