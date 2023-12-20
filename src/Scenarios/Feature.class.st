@@ -5,7 +5,7 @@ Each feature contains one or many scenarios that describe its behaviors
 "
 Class {
 	#name : #Feature,
-	#superclass : #Object,
+	#superclass : #TestAsserter,
 	#instVars : [
 		'scenarios',
 		'scenario',
@@ -87,6 +87,12 @@ Feature >> pending [
 	^ PendingStep signal
 ]
 
+{ #category : #accessing }
+Feature >> resources [
+
+	^ self shouldNotImplement
+]
+
 { #category : #running }
 Feature >> run [
 
@@ -122,11 +128,23 @@ Feature >> scenarios [
 	^ scenarios
 ]
 
+{ #category : #running }
+Feature >> setUp [
+
+	^ self shouldNotImplement 
+]
+
 { #category : #accessing }
 Feature >> stepDefinitions [
 
 	stepDefinitions ifNil: [ self buildStepDefinitions ].
 	^ stepDefinitions
+]
+
+{ #category : #running }
+Feature >> tearDown [
+
+	^ self shouldNotImplement
 ]
 
 { #category : #keywords }

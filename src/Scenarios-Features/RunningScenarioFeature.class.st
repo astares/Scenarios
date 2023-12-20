@@ -4,6 +4,9 @@ Basic scenarios for running features
 Class {
 	#name : #RunningScenarioFeature,
 	#superclass : #Feature,
+	#instVars : [
+		'result'
+	],
 	#category : #'Scenarios-Features'
 }
 
@@ -11,7 +14,7 @@ Class {
 RunningScenarioFeature >> allStepsPass [
 
 	<Then: 'all the steps pass'>
-	self pending
+	self assert: result passedCount equals: 3
 ]
 
 { #category : #steps }
@@ -28,7 +31,7 @@ RunningScenarioFeature >> allStepsRunCorrectly [
 RunningScenarioFeature >> runTheScenario [
 
 	<When: 'we run the scenario'>
-	self pending
+	result := scenario run
 ]
 
 { #category : #'steps - private' }
@@ -52,7 +55,7 @@ RunningScenarioFeature >> runningAScenario [
 RunningScenarioFeature >> scenarioPasses [
 
 	<Then: 'the scenario passes'>
-	self pending
+	self assert: result isPassed
 ]
 
 { #category : #steps }
