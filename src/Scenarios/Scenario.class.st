@@ -65,7 +65,7 @@ Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
 
 	aScenarioResult addResults: steps.
 	steps do: [ :each |
-		[ each run: aScenarioResult ]
+		[ each run ]
 			on: UndefinedStep , PendingStep , TestFailure , Error
 			do: [ :ex | ^ self ] ]
 ]

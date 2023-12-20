@@ -121,7 +121,7 @@ ScenarioStep >> printOn: aStream [
 ]
 
 { #category : #running }
-ScenarioStep >> run: aScenarioResult [
+ScenarioStep >> run [
 
 	[
 	[
@@ -140,6 +140,12 @@ ScenarioStep >> run: aScenarioResult [
 		do: [ :ex |
 			self beFailed.
 			ex pass ]
+]
+
+{ #category : #running }
+ScenarioStep >> run: aScenarioResult [
+
+	self run
 ]
 
 { #category : #running }
