@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'type',
 		'text',
-		'result'
+		'result',
+		'scenario'
 	],
 	#category : #'Scenarios-Base'
 }
@@ -37,10 +38,11 @@ ScenarioStep class >> pendingResult [
 ]
 
 { #category : #'instance creation' }
-ScenarioStep class >> type: aSymbol text: aString [ 
-	^self new
-		type: aSymbol text: aString;
-		yourself
+ScenarioStep class >> type: aSymbol text: aString scenario: aScenario [
+
+	^ self new
+		  type: aSymbol text: aString scenario: aScenario;
+		  yourself
 ]
 
 { #category : #constants }
@@ -143,7 +145,7 @@ ScenarioStep >> runStepWith: stepDefinitions [
 	definition := stepDefinitions
 		              detect: [ :each | each definition = text ]
 		              ifNone: [ UndefinedStep signal ].
-	definition valueWith: text
+	definition value: scenario feature With: text
 ]
 
 { #category : #accessing }
@@ -157,10 +159,11 @@ ScenarioStep >> type [
 ]
 
 { #category : #'private - initialization' }
-ScenarioStep >> type: aSymbol text: aString [
+ScenarioStep >> type: aSymbol text: aString scenario: aScenario [
 
 	type := aSymbol.
 	text := aString.
+	scenario := aScenario.
 
 	self beNotRun
 ]

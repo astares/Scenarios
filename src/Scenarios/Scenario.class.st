@@ -6,23 +6,30 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'title',
-		'steps'
+		'steps',
+		'feature'
 	],
 	#category : #'Scenarios-Base'
 }
 
 { #category : #'instance creation' }
-Scenario class >> title: aString [
+Scenario class >> title: aString feature: aFeature [
 
 	^ self new
-		  title: aString;
+		  title: aString feature: aFeature;
 		  yourself
 ]
 
 { #category : #steps }
 Scenario >> addStep: aSymbol text: aString [
 
-	steps add: (ScenarioStep type: aSymbol text: aString)
+	steps add: (ScenarioStep type: aSymbol text: aString scenario: self)
+]
+
+{ #category : #accessing }
+Scenario >> feature [
+
+	^feature
 ]
 
 { #category : #steps }
@@ -95,10 +102,10 @@ Scenario >> title [
 ]
 
 { #category : #initialization }
-Scenario >> title: aString [
+Scenario >> title: aString feature: aFeature [
 
 	title := aString.
-	steps := OrderedCollection new
+	feature := aFeature
 ]
 
 { #category : #steps }

@@ -38,7 +38,7 @@ Feature >> build [
 Feature >> buildScenarioFromMethod: aMethod [
 
 	| newScenario |
-	newScenario := Scenario title: (aMethod pragmaAt: #Scenario:) arguments first.
+	newScenario := Scenario title: (aMethod pragmaAt: #Scenario:) arguments first feature: self.
 	self withScenario: newScenario do: [ self perform: aMethod selector ].
 	^newScenario
 ]
@@ -54,8 +54,20 @@ Feature >> buildScenarios [
 
 { #category : #'private - building' }
 Feature >> buildStepDefinitions [
+
 	stepDefinitions := OrderedCollection new.
-	(Smalltalk organization classesInCategory: self class category) do: [:each | (each inheritsFrom: ScenarioStepDefinition) ifTrue: [ stepDefinitions addAll: (each buildStepDefinitions) ] ]
+	stepDefinitions addAll: ((self class methods select: [ :each |
+			  each hasPragma and: [
+				  each pragmas anySatisfy: [ :e |
+					  #( #Given: #When: #Then: ) includes: e selector ] ] ])
+			 collect: [ :each |
+				 ScenarioStepDefinition 
+					 define: each pragmas first arguments first
+					 perfoming: each selector ]).
+	(Smalltalk organization classesInCategory: self class category) do: [
+		:each |
+		(each inheritsFrom: ScenarioStepDefinition) ifTrue: [
+			stepDefinitions addAll: each buildStepDefinitions ] ]
 ]
 
 { #category : #keywords }

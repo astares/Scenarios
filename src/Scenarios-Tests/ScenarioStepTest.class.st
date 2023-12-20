@@ -11,17 +11,17 @@ Class {
 ScenarioStepTest >> testInstanceCreation [
 
 	| step |
-	step := ScenarioStep type: #Given text: 'My app has started'.
+	step := ScenarioStep type: #Given text: 'My app has started' scenario: Scenario new.
 	self
 		assert: step type identicalTo: #Given;
-		assert: step text equals: 'My app has started'
+		assert: step text equals: 'My app has started'.
 ]
 
 { #category : #tests }
 ScenarioStepTest >> testNewStepIsNotRun [
 
 	| step |
-	step := ScenarioStep type: #Given text: 'A sample step'.
+	step := ScenarioStep type: #Given text: 'A sample step' scenario: Scenario new.
 	self assert: step wasNotRun
 ]
 
@@ -29,7 +29,7 @@ ScenarioStepTest >> testNewStepIsNotRun [
 ScenarioStepTest >> testPrintingToString [
 
 	| step |
-	step := ScenarioStep type: #Given text: 'My app has started'.
+	step := ScenarioStep type: #Given text: 'My app has started' scenario: Scenario new.
 
 	self assert: step printString equals: 'Given My app has started'
 ]

@@ -8,7 +8,7 @@ Class {
 ScenarioTest >> testAddingStepToScenario [
 
 	| scenario |
-	scenario := Scenario title: 'My scenario'.
+	scenario := Scenario title: 'My scenario' feature: Feature new.
 	scenario addStep: #Given text: 'My app has started'.
 	self
 		assert: scenario steps first text equals: 'My app has started'
@@ -18,7 +18,7 @@ ScenarioTest >> testAddingStepToScenario [
 ScenarioTest >> testNewlyCreatedScenarioHasNoSteps [
 
 	| scenario |
-	scenario := Scenario title: 'My scenario'.
+	scenario := Scenario title: 'My scenario' feature: Feature new.
 	self deny: scenario hasSteps
 ]
 
@@ -26,7 +26,7 @@ ScenarioTest >> testNewlyCreatedScenarioHasNoSteps [
 ScenarioTest >> testPrintStringWithoutSteps [
 
 	|newInstance|
-	newInstance := Scenario title: 'My scenario'.
+	newInstance := Scenario title: 'My scenario' feature: Feature new.
 	
 	self assert: newInstance printString equals: 'Scenario: My scenario'
 
@@ -38,7 +38,7 @@ ScenarioTest >> testRunningScenarioProducesResult [
 	| result scenario |
 	scenario := SampleFeature new scenarioNamed:
 		            'Running a scenario'.
-	result := scenario runWith: SampleStepDefinitions buildStepDefinitions.
+	result := scenario runWith: SampleFeature new stepDefinitions.
 	self assert: result resultCount equals: scenario steps size
 ]
 
@@ -57,7 +57,7 @@ ScenarioTest >> testSampleScenarioHasOneOrMoreSteps [
 ScenarioTest >> testScenarioHasTitle [
 
 	| sampleScenario |
-	sampleScenario := Scenario title: 'A scenario has one or more steps'.
+	sampleScenario := Scenario title: 'A scenario has one or more steps' feature: Feature new.
 	self
 		assert: sampleScenario title
 		equals: 'A scenario has one or more steps'
@@ -70,7 +70,7 @@ ScenarioTest >> testScenarioStepsCanBePending [
 	scenario := SampleFeature new scenarioNamed:
 		            'A scenario can be pending'.
 	result := scenario runWith:
-		          SampleStepDefinitions buildStepDefinitions.
+		          SampleFeature new stepDefinitions.
 	self assert: result pendingCount equals: 1
 ]
 
@@ -80,6 +80,7 @@ ScenarioTest >> testScenarioStepsGetSkipped [
 	| scenario result |
 	scenario := SampleFeature new scenarioNamed:
 		            'A scenario has one or more steps'.
-	result := scenario runWith: SampleStepDefinitions buildStepDefinitions.
+	result := scenario runWith:
+		          SampleFeature new stepDefinitions.
 	self assert: result skippedCount equals: 2
 ]

@@ -77,6 +77,12 @@ ScenarioStepDefinition >> tearDown [
 ]
 
 { #category : #evaluating }
+ScenarioStepDefinition >> value: aScenario With: aString [
+
+	aScenario perform: selector
+]
+
+{ #category : #evaluating }
 ScenarioStepDefinition >> valueWith: aString [ 
 	self perform: selector
 ]
