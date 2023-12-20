@@ -38,7 +38,7 @@ ScenarioStepDefinition >> selector [
 ]
 
 { #category : #evaluating }
-ScenarioStepDefinition >> value: aScenario With: aString [
+ScenarioStepDefinition >> value: aFeature with: aString [
 
-	aScenario perform: selector
+	aFeature perform: selector
 ]

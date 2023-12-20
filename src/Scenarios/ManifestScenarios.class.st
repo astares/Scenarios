@@ -9,7 +9,9 @@ Class {
 
 { #category : #'code-critics' }
 ManifestScenarios class >> ruleBadMessageRule2V1FalsePositive [
-	^ #(#(#(#RGMethodDefinition #(#Feature #buildScenarioFromMethod: #false)) #'2022-06-12T21:05:31.156+01:00') )
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGMethodDefinition #(#Feature #buildScenarioFromMethod: #false)) #'2022-06-12T21:05:31.156+01:00') #(#(#RGMethodDefinition #(#ScenarioStepDefinition #value:with: #false)) #'2023-12-20T15:46:28.523+00:00') )
 ]
 
 { #category : #'code-critics' }

@@ -145,7 +145,7 @@ ScenarioStep >> runStepWith: stepDefinitions [
 	definition := stepDefinitions
 		              detect: [ :each | each definition = text ]
 		              ifNone: [ UndefinedStep signal ].
-	definition value: scenario feature With: text
+	definition value: scenario feature with: text
 ]
 
 { #category : #accessing }
