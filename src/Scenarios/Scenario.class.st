@@ -60,8 +60,8 @@ Scenario >> printOn: aStream [
 ]
 
 { #category : #running }
-Scenario >> run: aScenarioResult with: aCollectionOfStepDefinitions [
-	"Run the scenario (receiver) by using the given object to store the result together with the given step definitions"
+Scenario >> run: aScenarioResult [
+	"Run the scenario (receiver) by using the given object to store the result" 
 
 	aScenarioResult addResults: steps.
 	steps do: [ :each |
@@ -75,7 +75,7 @@ Scenario >> runWith: aCollectionOfStepDefinitions [
 
 	| result |
 	result := ScenarioResult scenario: self.
-	self run: result with: aCollectionOfStepDefinitions.
+	self run: result.
 	^ result
 ]
 

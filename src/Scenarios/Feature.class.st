@@ -95,7 +95,7 @@ Feature >> run: aFeatureResult [
 		| result |
 		result := ScenarioResult scenario: each.
 		aFeatureResult addResult: result.
-		each run: result with: self stepDefinitions ]
+		each run: result]
 ]
 
 { #category : #querying }

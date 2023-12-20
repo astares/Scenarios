@@ -143,12 +143,6 @@ ScenarioStep >> run [
 ]
 
 { #category : #running }
-ScenarioStep >> run: aScenarioResult [
-
-	self run
-]
-
-{ #category : #running }
 ScenarioStep >> runStep [
 
 	| definition |
