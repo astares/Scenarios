@@ -77,6 +77,12 @@ Feature >> given: aString [
 ]
 
 { #category : #running }
+Feature >> pending [
+
+	^ PendingStep signal
+]
+
+{ #category : #running }
 Feature >> run [
 
 	| result |

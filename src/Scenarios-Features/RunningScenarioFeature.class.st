@@ -14,3 +14,10 @@ RunningScenarioFeature >> runningAScenario [
 		then: 'the scenario passes';
 		then: 'all the steps pass'
 ]
+
+{ #category : #steps }
+RunningScenarioFeature >> simpleScenario [
+
+	<Given: 'a simple scenario'>
+	self pending
+]

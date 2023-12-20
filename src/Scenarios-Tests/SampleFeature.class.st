@@ -38,12 +38,6 @@ SampleFeature >> featureWithOneScenario [
 	
 ]
 
-{ #category : #running }
-SampleFeature >> pending [
-
-	^ PendingStep signal
-]
-
 { #category : #steps }
 SampleFeature >> pendingScenario [
 
