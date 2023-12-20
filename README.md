@@ -10,7 +10,7 @@
 ## What's this?
 **_Scenarios_** is a framework to support [Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) (BDD) and [Acceptance Test Driven Development](https://en.wikipedia.org/wiki/Acceptance_test-driven_development) (ATDD) in [Pharo](https://www.pharo.org).
 
-As of 18 December 2023, it implements the bare minimum to allow people to get started.
+As of 20 December 2023, it implements the bare minimum to allow people to get started.
 
 The long term plan is to develop the framework to support most if not all features of [Cucumber](https://cucumber.io/), including support for Cucumber's [Gerkhin](https://cucumber.io/docs/gherkin/) language.
 
@@ -64,17 +64,14 @@ Then the Scenario steps are **declared** by sending the `#given:`, `#when:`, and
 ```Smalltalk
 scenarioHasSteps
 	<Scenario: 'A scenario has one or more steps'>
+	self
+		given: 'A scenario with steps';
+		when: 'A Scenario object gets created from it';
+		then: 'The Scenario object has all the steps'
 ```
 
 ### Defining steps
-Steps will then be **defined** in a separate class from the feature class. This class will need to be a subclass of `ScenarioStepDefinition`.
-
-```Smalltalk
-ScenarioStepDefinition subclass: #SampleStepDefinitions
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Scenarios-Tests-Sample'
-```
+Steps will then be **defined** in then same feature class.
 
 Each step can be defined in its own method tagged with one of the #`Given:`, `#When:`, or `#Then:` pragmas:
 
