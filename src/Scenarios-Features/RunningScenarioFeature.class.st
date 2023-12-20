@@ -38,6 +38,13 @@ RunningScenarioFeature >> oneStepIsImplementedIncorrectly [
 ]
 
 { #category : #steps }
+RunningScenarioFeature >> oneStepIsMarkedAsFailed [
+
+	<Then: 'one step is marked as failed'>
+	self pending
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> runTheScenario [
 
 	<When: 'we run the scenario'>
@@ -71,8 +78,13 @@ RunningScenarioFeature >> scenarioFails [
 { #category : #scenarios }
 RunningScenarioFeature >> scenarioFailure [
 
-	<Then: 'one step is marked as failed'>
-	self pending
+	<Scenario: 'Failing Scenario'>
+	self
+		given: 'a simple scenario';
+		given: 'one step is implemented incorrectly';
+		when: 'we run the scenario';
+		then: 'the scenario fails';
+		then: 'one step is marked as failed'
 ]
 
 { #category : #steps }
