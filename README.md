@@ -12,6 +12,8 @@
 
 As of 20 December 2023, it implements the bare minimum to allow people to get started.
 
+The short term plan is ensure the implemented features are documented using the framework itself, to validate its design choices.
+
 The long term plan is to develop the framework to support most if not all features of [Cucumber](https://cucumber.io/), including support for Cucumber's [Gerkhin](https://cucumber.io/docs/gherkin/) language.
 
 ## Installing
@@ -69,6 +71,7 @@ scenarioHasSteps
 		when: 'A Scenario object gets created from it';
 		then: 'The Scenario object has all the steps'
 ```
+The current convention is to categorize the scenario methods in a _scenarios_ protocol.
 
 ### Defining steps
 Steps will then be **defined** in then same feature class.
@@ -80,6 +83,7 @@ failingScenario
 	<Then: 'The scenario could fail'>
 	self assert: false
 ```
+The current convention is to categorize the step methods in a _steps_ protocol.
 
 ### Running features and scenarios
 At the moment, there is a SimpleScenarioRunner that needs to be triggered from a Playground.
@@ -100,3 +104,6 @@ SampleFeature new run
 ``` 
 
 in a Playground to execute all scenarios in class `SampleFeature`.
+
+### Examples
+We are using Scenarios itself to drive the testing and development of the framework. The features defined in the _Scenarios-Features_ package can be used as examples of how to use the framework.
