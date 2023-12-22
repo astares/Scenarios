@@ -5,7 +5,8 @@ Class {
 	#name : #RunningScenarioFeature,
 	#superclass : #Feature,
 	#instVars : [
-		'result'
+		'result',
+		'theScenario'
 	],
 	#category : #'Scenarios-Features'
 }
@@ -14,7 +15,7 @@ Class {
 RunningScenarioFeature >> allStepsAreCorrectlyImplemented [
 
 	<Given: 'all its steps are correctly implemented'>
-	scenario
+	theScenario
 		addStep: #Given text: 'a test scenario';
 		addStep: #When text: 'we run the test scenario';
 		addStep: #Then text: 'the test scenario passes'
@@ -31,7 +32,7 @@ RunningScenarioFeature >> allStepsPass [
 RunningScenarioFeature >> oneStepIsImplementedIncorrectly [
 
 	<Given: 'one step is implemented incorrectly'>
-	scenario
+	theScenario
 		addStep: #Given text: 'a test scenario';
 		addStep: #When text: 'we run the test scenario';
 		addStep: #Then text: 'the test scenario fails'
@@ -48,7 +49,7 @@ RunningScenarioFeature >> oneStepIsMarkedAsFailed [
 RunningScenarioFeature >> runTheScenario [
 
 	<When: 'we run the scenario'>
-	result := scenario run
+	result := theScenario run
 ]
 
 { #category : #'steps - private' }
@@ -61,8 +62,9 @@ RunningScenarioFeature >> runTheTestScenario [
 RunningScenarioFeature >> runningAScenario [
 
 	<Scenario: 'Running a scenario'>
-	self given: 'a simple scenario';
-		given: 'all its steps run correctly';
+	self
+		given: 'a simple scenario';
+		given: 'all its steps are correctly implemented';
 		when: 'we run the scenario';
 		then: 'the scenario passes';
 		then: 'all the steps pass'
@@ -98,7 +100,7 @@ RunningScenarioFeature >> scenarioPasses [
 RunningScenarioFeature >> simpleScenario [
 
 	<Given: 'a simple scenario'>
-	scenario := Scenario title: 'a scenario' feature: self.
+	theScenario := Scenario title: 'a scenario' feature: self
 ]
 
 { #category : #'steps - private' }
