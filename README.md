@@ -12,6 +12,8 @@
 
 As of 20 December 2023, it implements the bare minimum to allow people to get started.
 
+The short term plan is ensure the implemented features are documented using the framework itself, to validate its design choices.
+
 The long term plan is to develop the framework to support most if not all features of [Cucumber](https://cucumber.io/), including support for Cucumber's [Gerkhin](https://cucumber.io/docs/gherkin/) language.
 
 ## Installing
@@ -69,9 +71,10 @@ scenarioHasSteps
 		when: 'A Scenario object gets created from it';
 		then: 'The Scenario object has all the steps'
 ```
+The current convention is to categorize the scenario methods in a _scenarios_ protocol.
 
 ### Defining steps
-Steps will then be **defined** in then same feature class.
+Steps will then be **defined** in the same feature class.
 
 Each step can be defined in its own method tagged with one of the #`Given:`, `#When:`, or `#Then:` pragmas:
 
@@ -80,6 +83,7 @@ failingScenario
 	<Then: 'The scenario could fail'>
 	self assert: false
 ```
+The current convention is to categorize the step methods in a _steps_ protocol.
 
 ### Running features and scenarios
 At the moment, there is a SimpleScenarioRunner that needs to be triggered from a Playground.
@@ -92,7 +96,7 @@ SimpleScenarioRunner new runAllFeatures
 
 in a Playground. 
 
-To execute only one `Feature`, send #run to a class instance. 
+To execute only one `Feature`, send `#run` to a class instance. 
 Example: evaluate 
 
 ```Smalltalk
@@ -100,3 +104,15 @@ SampleFeature new run
 ``` 
 
 in a Playground to execute all scenarios in class `SampleFeature`.
+
+To run a single scenario, send `#runNamed:` to a class instance with the name of the scenario as the argument.
+Example: evaluate
+
+```Smalltalk
+SampleFeature new runNamed: 'Running a scenario'
+```
+
+in a Playground to execute only the scenario named 'Running a scenario'.
+
+### Examples
+We are using Scenarios itself to drive the testing and development of the framework. The features defined in the _Scenarios-Features_ package can be used as examples of how to use the framework.
