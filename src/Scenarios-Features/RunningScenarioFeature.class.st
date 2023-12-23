@@ -42,7 +42,8 @@ RunningScenarioFeature >> oneStepIsImplementedIncorrectly [
 RunningScenarioFeature >> oneStepIsMarkedAsFailed [
 
 	<Then: 'one step is marked as failed'>
-	self pending
+	self assert: result failedCount equals: 1.
+	self assert: result failed first text equals: 'the test scenario fails'
 ]
 
 { #category : #steps }
@@ -93,7 +94,8 @@ RunningScenarioFeature >> scenarioFailure [
 RunningScenarioFeature >> scenarioPasses [
 
 	<Then: 'the scenario passes'>
-	self assert: result isPassed
+	self assert: result isPassed.
+	self assert: result passedCount equals: 3
 ]
 
 { #category : #steps }
