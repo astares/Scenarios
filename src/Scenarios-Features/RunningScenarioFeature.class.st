@@ -47,6 +47,26 @@ RunningScenarioFeature >> oneStepIsMarkedAsFailed [
 ]
 
 { #category : #steps }
+RunningScenarioFeature >> oneStepIsStillMarkedAsFailed [
+
+	<Then: 'one step is still marked as failed'>
+	self assert: result failedCount equals: 1.
+	self
+		assert: result failed first text
+		equals: 'the test scenario fails due to error'
+]
+
+{ #category : #steps }
+RunningScenarioFeature >> oneStepRaisesAnError [
+
+	<Given: 'one step raises an error'>
+	theScenario
+		addStep: #Given text: 'a test scenario';
+		addStep: #When text: 'we run the test scenario';
+		addStep: #Then text: 'the test scenario fails due to error'
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> runTheScenario [
 
 	<When: 'we run the scenario'>
@@ -69,6 +89,18 @@ RunningScenarioFeature >> runningAScenario [
 		when: 'we run the scenario';
 		then: 'the scenario passes';
 		then: 'all the steps pass'
+]
+
+{ #category : #scenarios }
+RunningScenarioFeature >> scenarioError [
+
+	<Scenario: 'Scenario raising error'>
+	self
+		given: 'a simple scenario';
+		given: 'one step raises an error';
+		when: 'we run the scenario';
+		then: 'the scenario fails';
+		then: 'one step is still marked as failed'
 ]
 
 { #category : #steps }
@@ -117,6 +149,13 @@ RunningScenarioFeature >> testScenarioFails [
 	<Then: 'the test scenario fails'>
 	self assert: false
 	
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> testScenarioFailsDueToError [
+
+	<Then: 'the test scenario fails due to error'>
+	self error: 'a step error'
 ]
 
 { #category : #'steps - private' }
