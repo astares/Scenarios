@@ -47,6 +47,16 @@ RunningScenarioFeature >> oneStepIsMarkedAsFailed [
 ]
 
 { #category : #steps }
+RunningScenarioFeature >> oneStepIsMarkedAsUndefined [
+
+	<Then: 'one step is marked as undefined'>
+	self assert: result undefinedCount equals: 1.
+	self
+		assert: result undefined first text
+		equals: 'a test scenario that is not defined'
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> oneStepIsStillMarkedAsFailed [
 
 	<Then: 'one step is still marked as failed'>
@@ -54,6 +64,16 @@ RunningScenarioFeature >> oneStepIsStillMarkedAsFailed [
 	self
 		assert: result failed first text
 		equals: 'the test scenario fails due to error'
+]
+
+{ #category : #steps }
+RunningScenarioFeature >> oneStepIsUndefined [
+
+	<Given: 'one step is undefined'>
+	theScenario
+		addStep: #Given text: 'a test scenario that is not defined';
+		addStep: #When text: 'we run the test scenario';
+		addStep: #Then text: 'the test scenario fails'
 ]
 
 { #category : #steps }
@@ -128,6 +148,18 @@ RunningScenarioFeature >> scenarioPasses [
 	<Then: 'the scenario passes'>
 	self assert: result isPassed.
 	self assert: result passedCount equals: 3
+]
+
+{ #category : #scenarios }
+RunningScenarioFeature >> scenarioUndefined [
+
+	<Scenario: 'Scenario with undefined step'>
+	self
+		given: 'a simple scenario';
+		given: 'one step is undefined';
+		when: 'we run the scenario';
+		then: 'the scenario fails';
+		then: 'one step is marked as undefined'
 ]
 
 { #category : #steps }
