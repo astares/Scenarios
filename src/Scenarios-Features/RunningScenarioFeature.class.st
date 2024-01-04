@@ -12,6 +12,16 @@ Class {
 }
 
 { #category : #steps }
+RunningScenarioFeature >> allRemainingStepsAreMarkedAsSkipped [
+
+	<Then: 'all remaining steps are marked as skipped'>
+	self assert: result skippedCount equals: 2.
+	self
+		assert: result skipped last text
+		equals: 'the test scenario fails'
+]
+
+{ #category : #steps }
 RunningScenarioFeature >> allStepsAreCorrectlyImplemented [
 
 	<Given: 'all its steps are correctly implemented'>
@@ -26,6 +36,16 @@ RunningScenarioFeature >> allStepsPass [
 
 	<Then: 'all the steps pass'>
 	self assert: result passedCount equals: 3
+]
+
+{ #category : #steps }
+RunningScenarioFeature >> firstStepFails [
+
+	<Given: 'the first step fails'>
+	theScenario
+		addStep: #Given text: 'a test step that fails';
+		addStep: #When text: 'we run the test scenario';
+		addStep: #Then text: 'the test scenario fails'
 ]
 
 { #category : #steps }
@@ -155,6 +175,25 @@ RunningScenarioFeature >> simpleScenario [
 
 	<Given: 'a simple scenario'>
 	theScenario := Scenario title: 'a scenario' feature: self
+]
+
+{ #category : #scenarios }
+RunningScenarioFeature >> skippedSteps [
+
+	<Scenario: 'Scenario with skipped steps'>
+	self
+		given: 'a simple scenario';
+		given: 'the first step fails';
+		when: 'we run the scenario';
+		then: 'all remaining steps are marked as skipped'
+]
+
+{ #category : #'steps - private' }
+RunningScenarioFeature >> stepThatFails [
+
+	<Given: 'a test step that fails'>
+	self assert: false
+	
 ]
 
 { #category : #'steps - private' }
