@@ -1,5 +1,5 @@
 "
-Basic scenarios for running features
+Basic scenarios for running single scenarios
 "
 Class {
 	#name : #RunningScenarioFeature,
