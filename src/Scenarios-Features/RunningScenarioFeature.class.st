@@ -150,18 +150,6 @@ RunningScenarioFeature >> scenarioPasses [
 	self assert: result passedCount equals: 3
 ]
 
-{ #category : #scenarios }
-RunningScenarioFeature >> scenarioUndefined [
-
-	<Scenario: 'Scenario with undefined step'>
-	self
-		given: 'a simple scenario';
-		given: 'one step is undefined';
-		when: 'we run the scenario';
-		then: 'the scenario fails';
-		then: 'one step is marked as undefined'
-]
-
 { #category : #steps }
 RunningScenarioFeature >> simpleScenario [
 
@@ -194,4 +182,16 @@ RunningScenarioFeature >> testScenarioFailsDueToError [
 RunningScenarioFeature >> testScenarioPasses [
 
 	<Then: 'the test scenario passes'>
+]
+
+{ #category : #scenarios }
+RunningScenarioFeature >> undefinedStep [
+
+	<Scenario: 'Scenario with undefined step'>
+	self
+		given: 'a simple scenario';
+		given: 'one step is undefined';
+		when: 'we run the scenario';
+		then: 'the scenario fails';
+		then: 'one step is marked as undefined'
 ]
